@@ -996,10 +996,10 @@ p { text-wrap: pretty; }
    registro real; no hace falta tocar el HTML. */
 const REDEMIGRA = {
   links: {
-    emigrar: "/redemigra-app/web/app.html#/registro?rol=emigrante",
-    mentor: "/redemigra-app/web/app.html#/registro?rol=mentor",
-    ingresar: "/redemigra-app/web/app.html#/ingresar",
-    perfil: function (slug) { return "/redemigra-app/web/app.html#/mentores/" + slug; }
+    emigrar: "/registro?rol=emigrante",
+    mentor: "/registro?rol=mentor",
+    ingresar: "/ingresar",
+    perfil: function (slug) { return "/mentores/" + slug; }
   }
 };
 
