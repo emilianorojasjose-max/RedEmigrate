@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="RedEmigra">
+  <path d="M32 2.5C18.4 2.5 7.5 13.2 7.5 26.4c0 8.8 5.2 16.6 12.4 23.8 4.6 4.6 8.6 8.5 12.1 12.3 3.5-3.8 7.5-7.7 12.1-12.3 7.2-7.2 12.4-15 12.4-23.8C56.5 13.2 45.6 2.5 32 2.5z" fill="#0B1F3A"/>
+  <circle cx="25" cy="19.6" r="4.9" fill="#fff"/>
+  <path d="M16.2 40.5a8.8 11 0 0 1 17.6 0z" fill="#fff"/>
+  <circle cx="39" cy="19.6" r="4.9" fill="#FF7A1A"/>
+  <path d="M30.2 40.5a8.8 11 0 0 1 17.6 0z" fill="#FF7A1A" stroke="#0B1F3A" stroke-width="1.6" stroke-linejoin="round"/>
+</svg>

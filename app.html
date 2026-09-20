@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RedEmigra</title>
+<meta name="description" content="Mentoría entre inmigrantes: hablá con quien ya vive donde querés vivir.">
+<meta name="theme-color" content="#0B1F3A">
+<link rel="icon" href="/assets/mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/app.css">
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<div id="app-header"></div>
+<main id="main" tabindex="-1"><div class="container page"><div class="skeleton" style="height:220px"></div></div></main>
+<div id="app-footer"></div>
+<div id="toasts" role="status" aria-live="polite"></div>
+
+<noscript><p style="padding:24px">RedEmigra necesita JavaScript para funcionar.</p></noscript>
+
+<!-- Cliente de Supabase (se carga en el navegador de cada persona). Podés alojarlo vos mismo si preferís. -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/js/config.js"></script>
+<script type="module" src="/js/main.js"></script>
+</body>
+</html>

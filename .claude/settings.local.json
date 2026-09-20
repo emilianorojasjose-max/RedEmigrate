@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd \"c:/Users/Usuaria/Desktop/RedEmigra/redemigra-app\" && ls -la && echo \"---web---\" && ls -la web 2>/dev/null; find . -maxdepth 3 -iname \"SETUP.md\" -o -iname \"README*\" -o -iname \"*.cursorrules\" 2>/dev/null; echo \"---\"; find . -maxdepth 2 -iname \"CLAUDE.md\")",
+      "Read(//c/Users/Usuaria/Desktop/RedEmigra/redemigra-app/**)"
+    ]
+  }
+}

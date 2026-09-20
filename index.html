@@ -1,0 +1,1141 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RedEmigra | Conectá con personas que ya emigraron</title>
+<meta name="description" content="Conecta con personas que ya hicieron el camino que vos estás por empezar. Recibí acompañamiento real de inmigrantes que viven en el país al que querés llegar.">
+<meta name="theme-color" content="#0B1F3A">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22 role=%22img%22 aria-label=%22RedEmigra%22%3E  %3Cpath d=%22M32 2.5C18.4 2.5 7.5 13.2 7.5 26.4c0 8.8 5.2 16.6 12.4 23.8 4.6 4.6 8.6 8.5 12.1 12.3 3.5-3.8 7.5-7.7 12.1-12.3 7.2-7.2 12.4-15 12.4-23.8C56.5 13.2 45.6 2.5 32 2.5z%22 fill=%22%230B1F3A%22/%3E  %3Ccircle cx=%2225%22 cy=%2219.6%22 r=%224.9%22 fill=%22%23fff%22/%3E  %3Cpath d=%22M16.2 40.5a8.8 11 0 0 1 17.6 0z%22 fill=%22%23fff%22/%3E  %3Ccircle cx=%2239%22 cy=%2219.6%22 r=%224.9%22 fill=%22%23FF7A1A%22/%3E  %3Cpath d=%22M30.2 40.5a8.8 11 0 0 1 17.6 0z%22 fill=%22%23FF7A1A%22 stroke=%22%230B1F3A%22 stroke-width=%221.6%22 stroke-linejoin=%22round%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Inter:wght@400..600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   RedEmigra — landing
+   1. Tokens   2. Base   3. Componentes   4. Secciones   5. Movimiento
+   ========================================================================== */
+
+/* 1. TOKENS ---------------------------------------------------------------- */
+:root {
+  --navy-950: #071528;
+  --navy-900: #0B1F3A;
+  --navy-800: #12305A;
+  --navy-700: #1B437D;
+  --blue-500: #2F6FDB;
+  --blue-300: #8DB6F5;
+  --blue-100: #E3EDFC;
+  --orange-500: #FF7A1A;
+  --orange-600: #E96400;
+  --orange-700: #C24E00;
+  --orange-100: #FFEBD9;
+  --white: #FFFFFF;
+  --gray-50: #F4F6F9;
+  --gray-100: #E8ECF2;
+  --gray-200: #D5DBE5;
+  --gray-500: #5A667A;
+  --gray-700: #3A475C;
+
+  --font-display: "Bricolage Grotesque", "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-text: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  --shadow-card: 0 1px 2px rgba(11, 31, 58, .06), 0 8px 24px rgba(11, 31, 58, .08);
+  --shadow-float: 0 18px 48px rgba(7, 21, 40, .22);
+
+  --gutter: 20px;
+  --maxw: 1160px;
+  --section-pad: clamp(64px, 9vw, 112px);
+  --ease: cubic-bezier(.22, .61, .36, 1);
+}
+
+/* 2. BASE ------------------------------------------------------------------ */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--font-text);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--gray-700);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img, svg { display: block; max-width: 100%; }
+h1, h2, h3, h4, p, ul, ol, dl, dd, figure, blockquote { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--blue-500); outline-offset: 3px; border-radius: 6px; }
+.on-dark :focus-visible { outline-color: var(--blue-300); }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--navy-900);
+  font-weight: 700;
+  letter-spacing: -.02em;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+.on-dark h1, .on-dark h2, .on-dark h3, .on-dark h4 { color: var(--white); }
+p { text-wrap: pretty; }
+
+.container { width: min(100% - 2 * var(--gutter), var(--maxw)); margin-inline: auto; }
+.section { padding-block: var(--section-pad); position: relative; }
+.section--gray { background: var(--gray-50); }
+.section--navy { background: var(--navy-900); color: #C6D2E4; }
+.on-dark { color: #C6D2E4; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.ico { width: 1.25em; height: 1.25em; flex: none; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; line-height: 16px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--navy-700);
+}
+.on-dark .eyebrow { color: var(--blue-300); }
+.eyebrow::before { content: ""; width: 20px; height: 2px; background: currentColor; border-radius: 2px; opacity: .6; }
+
+.section-head { max-width: 720px; margin-bottom: clamp(36px, 5vw, 56px); }
+.section-head h2 { font-size: clamp(1.9rem, 1.1rem + 2.8vw, 2.9rem); margin-top: 14px; }
+.section-head p { margin-top: 18px; font-size: 1.125rem; color: var(--gray-700); }
+.on-dark .section-head p { color: #C6D2E4; }
+.section-head--center { margin-inline: auto; text-align: center; }
+.section-head--center .eyebrow::before { display: none; }
+
+/* 3. COMPONENTES ----------------------------------------------------------- */
+.btn {
+  --btn-h: 52px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: var(--btn-h); padding: 0 26px;
+  border-radius: var(--radius-pill); border: 1.5px solid transparent;
+  font: 600 16px/1 var(--font-text); letter-spacing: -.005em; text-decoration: none; white-space: nowrap;
+  cursor: pointer; transition: transform .2s var(--ease), background-color .2s, color .2s, border-color .2s, box-shadow .2s;
+}
+.btn .ico { width: 18px; height: 18px; transition: transform .2s var(--ease); }
+.btn:hover .ico { transform: translateX(3px); }
+.btn--sm { --btn-h: 44px; padding: 0 20px; font-size: 15px; }
+.btn--primary { background: var(--orange-500); color: var(--navy-900); box-shadow: 0 6px 18px rgba(255, 122, 26, .28); }
+.btn--primary:hover { background: var(--orange-600); transform: translateY(-1px); box-shadow: 0 10px 24px rgba(233, 100, 0, .32); }
+.btn--ghost { border-color: var(--navy-900); color: var(--navy-900); background: transparent; }
+.btn--ghost:hover { background: var(--navy-900); color: var(--white); }
+.btn--ghost-light { border-color: rgba(255, 255, 255, .42); color: var(--white); background: transparent; }
+.btn--ghost-light:hover { background: rgba(255, 255, 255, .1); border-color: var(--white); }
+.btn--block { width: 100%; }
+
+.tag-example {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; line-height: 16px; font-weight: 600; color: var(--gray-500);
+  padding: 4px 10px; border: 1px dashed var(--gray-200); border-radius: var(--radius-pill); background: rgba(255,255,255,.6);
+}
+
+.badge-verified {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 12px 6px 8px; border-radius: var(--radius-pill);
+  background: var(--blue-100); color: var(--navy-900);
+  font-size: 14px; line-height: 20px; font-weight: 600;
+}
+.badge-verified .ico { color: var(--blue-500); width: 18px; height: 18px; }
+
+.flag { width: 22px; height: 22px; border-radius: 50%; box-shadow: 0 0 0 1.5px var(--white), 0 0 0 2.5px rgba(11,31,58,.12); flex: none; overflow: hidden; }
+.flag--lg { width: 40px; height: 40px; }
+
+.avatar { position: relative; width: 72px; height: 72px; flex: none; }
+.avatar > svg:first-child { width: 100%; height: 100%; border-radius: 50%; }
+.avatar .flag { position: absolute; right: -4px; bottom: -2px; width: 26px; height: 26px; }
+
+/* NAV */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(255, 255, 255, .86); -webkit-backdrop-filter: saturate(1.4) blur(14px); backdrop-filter: saturate(1.4) blur(14px);
+  border-bottom: 1px solid transparent; transition: border-color .25s, box-shadow .25s;
+}
+.nav.is-scrolled { border-color: var(--gray-100); box-shadow: 0 6px 20px rgba(11, 31, 58, .05); }
+.nav__inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 68px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--navy-900); }
+.brand svg { width: 34px; height: 34px; }
+.wordmark { font-family: var(--font-display); font-size: 22px; line-height: 1; letter-spacing: -.02em; font-weight: 750; }
+.wordmark span { font-weight: 500; }
+.on-dark .brand { color: var(--white); }
+.nav__links { display: none; gap: 30px; }
+.nav__links a { font-size: 15px; font-weight: 500; color: var(--gray-700); text-decoration: none; padding: 8px 2px; position: relative; }
+.nav__links a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 2px; height: 2px; background: var(--orange-500); transform: scaleX(0); transform-origin: left; transition: transform .25s var(--ease); }
+.nav__links a:hover { color: var(--navy-900); }
+.nav__links a:hover::after { transform: scaleX(1); }
+.nav__actions { display: flex; align-items: center; gap: 10px; }
+.nav__actions .btn--ghost { display: none; }
+.nav__actions .nav__login { display: none !important; }   /* solo en pantallas anchas; en el resto: enlace del pie */
+@media (min-width: 1100px) { .nav__actions .nav__login { display: inline-flex !important; } }
+
+/* 4. SECCIONES ------------------------------------------------------------- */
+
+/* Hero */
+.hero { padding-block: clamp(36px, 6vw, 84px) clamp(56px, 8vw, 104px); overflow: hidden; }
+.hero__grid { display: grid; gap: clamp(36px, 6vw, 64px); align-items: center; }
+.pill {
+  display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px 7px 10px;
+  border-radius: var(--radius-pill); background: var(--gray-50); border: 1px solid var(--gray-100);
+  font-size: 14px; line-height: 20px; font-weight: 500; color: var(--navy-900);
+}
+.pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange-500); box-shadow: 0 0 0 4px var(--orange-100); }
+.hero h1 { font-size: clamp(2.3rem, 1.2rem + 4.4vw, 3.75rem); line-height: 1.04; margin-top: 22px; letter-spacing: -.028em; }
+.hero h1 em { font-style: normal; background: linear-gradient(transparent 66%, var(--orange-100) 66%, var(--orange-100) 92%, transparent 92%); padding-inline: 2px; }
+.hero__lead { margin-top: 22px; font-size: clamp(1.1rem, 1rem + .5vw, 1.3rem); line-height: 1.55; color: var(--gray-700); max-width: 34em; }
+.hero__cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.hero__cta .btn { flex: 1 1 200px; }
+.hero__note { display: flex; gap: 10px; align-items: flex-start; margin-top: 22px; font-size: 14px; line-height: 21px; color: var(--gray-500); max-width: 34em; }
+.hero__note .ico { color: var(--navy-700); margin-top: 1px; }
+
+.mapcard { position: relative; border-radius: var(--radius-xl); background: var(--navy-900); overflow: hidden; box-shadow: 0 30px 70px rgba(11, 31, 58, .28); isolation: isolate; }
+.mapcard::before { content: ""; position: absolute; inset: 0; background: radial-gradient(60% 50% at 30% 70%, rgba(47, 111, 219, .28), transparent 70%); z-index: -1; }
+.mapcard__svg { width: 100%; height: auto; }
+.map-base { fill: none; stroke: #6F8DB8; stroke-opacity: .5; stroke-width: 3.1; stroke-linecap: round; }
+.map-sec  { fill: none; stroke: var(--blue-300); stroke-opacity: .85; stroke-width: 3.3; stroke-linecap: round; }
+.map-hot  { fill: none; stroke: var(--white); stroke-width: 3.6; stroke-linecap: round; }
+.arc { fill: none; stroke-linecap: round; }
+.arc--net { stroke: var(--blue-300); stroke-width: 2; stroke-dasharray: 2 9; opacity: .4; }
+.arc--go { stroke: var(--orange-500); stroke-width: 3.4; stroke-dasharray: 1 1; stroke-dashoffset: 1; opacity: 0; }
+.arc--go.is-on { stroke-dashoffset: 0; opacity: 1; }
+.suitcase { pointer-events: none; }
+.pin-core { fill: var(--white); stroke: var(--navy-900); stroke-width: 1.6; transform-box: fill-box; transform-origin: center; transition: transform .35s var(--ease), fill .3s; }
+.pin-ring { fill: none; stroke: var(--orange-500); stroke-width: 2.5; opacity: 0; transform-box: fill-box; transform-origin: center; }
+.pin.is-on .pin-core { fill: var(--orange-500); stroke: var(--white); transform: scale(2); }
+.pin.is-on .pin-ring { animation: pulse 2.8s var(--ease) infinite; }
+.pin-label { font: 600 22px var(--font-text); fill: var(--white); paint-order: stroke; stroke: var(--navy-900); stroke-width: 6px; stroke-linejoin: round; opacity: 0; transition: opacity .3s; }
+.pin-label.is-on { opacity: 1; }
+
+.map-dots { fill: none; stroke: #fff; stroke-width: 3.2; stroke-linecap: round; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 10px; padding: 0 12px 12px; }
+.chip {
+  position: relative; display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px 10px 10px; background: var(--white); border-radius: 16px; box-shadow: var(--shadow-float);
+  font-size: 13px; line-height: 17px; color: var(--gray-500);
+}
+.chip strong { display: block; font-size: 14px; color: var(--navy-900); font-weight: 600; }
+.chip .avatar { width: 40px; height: 40px; }
+.chip .avatar .flag { width: 18px; height: 18px; right: -5px; bottom: -3px; }
+.chip { transition: opacity .4s var(--ease); }
+.chip.is-hidden { opacity: 0; }
+
+.chip__icon { width: 40px; height: 40px; border-radius: 12px; background: var(--orange-100); color: var(--orange-700); display: grid; place-items: center; }
+.chip__icon .ico { width: 20px; height: 20px; }
+.chip .stars { display: inline-flex; align-items: center; gap: 3px; color: var(--navy-900); font-weight: 600; }
+.chip .stars .ico { width: 13px; height: 13px; fill: var(--orange-500); stroke: var(--orange-500); }
+.map-toggle { position: absolute; right: 12px; top: 10px; width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .28); background: rgba(11, 31, 58, .55); color: var(--white); display: grid; place-items: center; cursor: pointer; z-index: 2; transition: background .2s; }
+.map-toggle:hover { background: rgba(255, 255, 255, .18); }
+.map-toggle:focus-visible { outline: 2px solid var(--orange-500); outline-offset: 2px; }
+.map-toggle .ico { width: 16px; height: 16px; }
+.map-toggle[hidden] { display: none; }
+.mapcard.is-paused * { animation-play-state: paused !important; }
+.mapcard__legend { position: absolute; left: 16px; top: 14px; font-size: 12px; color: #A9BBD6; letter-spacing: .02em; }
+
+/* Problema */
+.problem__grid { display: grid; gap: 40px; align-items: start; }
+.problem__list { display: grid; gap: 12px; }
+.problem__item {
+  display: flex; gap: 16px; align-items: flex-start; padding: 18px 20px;
+  background: var(--white); border: 1px solid var(--gray-100); border-radius: var(--radius-lg);
+}
+.problem__icon { width: 44px; height: 44px; border-radius: 14px; background: var(--gray-50); color: var(--navy-700); display: grid; place-items: center; flex: none; }
+.problem__item h3 { font-size: 18px; letter-spacing: -.01em; line-height: 1.25; }
+.problem__item p { margin-top: 2px; font-size: 15.5px; line-height: 1.55; color: var(--gray-500); }
+.quote-band {
+  margin-top: clamp(40px, 6vw, 72px); border-radius: var(--radius-xl); background: var(--navy-900);
+  padding: clamp(32px, 6vw, 72px); position: relative; overflow: hidden; isolation: isolate;
+}
+.quote-band .dots { position: absolute; right: -6%; top: -30%; width: 70%; height: auto; opacity: .16; z-index: -1; }
+.quote-band blockquote { font-family: var(--font-display); font-weight: 700; letter-spacing: -.025em; line-height: 1.08; font-size: clamp(1.9rem, 1rem + 3.6vw, 3.4rem); color: var(--white); max-width: 15em; text-wrap: balance; }
+.quote-band blockquote span { color: var(--orange-500); display: block; }
+.quote-band p { margin-top: 22px; max-width: 34em; font-size: clamp(1.05rem, 1rem + .3vw, 1.2rem); color: #C6D2E4; }
+
+/* Solucion */
+.solution__lines { display: grid; gap: 4px; text-align: center; font-family: var(--font-display); font-weight: 700; letter-spacing: -.03em; line-height: 1.04; font-size: clamp(2.1rem, 1rem + 4.6vw, 4rem); color: var(--navy-900); }
+.solution__lines .l2 { color: var(--navy-700); }
+.solution__lines .l3 em { font-style: normal; background: linear-gradient(transparent 68%, var(--orange-100) 68%, var(--orange-100) 92%, transparent 92%); padding-inline: 4px; }
+.solution__lead { margin: 26px auto 0; max-width: 40em; text-align: center; font-size: 1.15rem; color: var(--gray-700); }
+.routes { display: grid; gap: 12px; margin-top: clamp(36px, 5vw, 56px); grid-template-columns: 1fr; }
+.route {
+  display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px;
+  padding: 16px 20px; border-radius: var(--radius-lg); background: var(--gray-50); border: 1px solid var(--gray-100);
+  transition: transform .25s var(--ease), box-shadow .25s, background-color .25s;
+}
+.route:hover { transform: translateY(-3px); box-shadow: var(--shadow-card); background: var(--white); }
+.route__end { display: flex; align-items: center; gap: 12px; font-family: var(--font-display); font-weight: 650; font-size: 17px; color: var(--navy-900); letter-spacing: -.01em; }
+.route__end--to { justify-content: flex-end; text-align: right; flex-direction: row-reverse; }
+.route__line { position: relative; height: 2px; background: repeating-linear-gradient(90deg, var(--gray-200) 0 6px, transparent 6px 12px); min-width: 24px; }
+.route__line::after { content: ""; position: absolute; right: -2px; top: 50%; width: 8px; height: 8px; border-top: 2px solid var(--orange-500); border-right: 2px solid var(--orange-500); transform: translateY(-50%) rotate(45deg); }
+
+/* Como funciona */
+.steps { display: grid; gap: 16px; }
+.step { background: var(--white); border: 1px solid var(--gray-100); border-radius: var(--radius-lg); padding: 24px; display: flex; flex-direction: column; gap: 14px; box-shadow: var(--shadow-card); }
+.step__num { font-family: var(--font-display); font-weight: 750; font-size: 44px; line-height: 1; letter-spacing: -.04em; color: var(--navy-900); display: flex; align-items: baseline; gap: 10px; }
+.step__num i { font-style: normal; flex: 1; height: 2px; background: var(--gray-100); align-self: center; }
+.step h3 { font-size: 21px; letter-spacing: -.015em; }
+.step p { font-size: 15.5px; line-height: 1.6; color: var(--gray-700); }
+.mock { margin-top: auto; padding: 14px; border-radius: var(--radius-md); background: var(--gray-50); border: 1px solid var(--gray-100); display: grid; gap: 8px; font-size: 13.5px; line-height: 18px; color: var(--navy-900); min-height: 132px; align-content: center; }
+.mock__row { display: flex; align-items: center; gap: 10px; padding: 9px 12px; background: var(--white); border: 1px solid var(--gray-100); border-radius: 10px; font-weight: 500; }
+.mock__row .ico { width: 16px; height: 16px; color: var(--navy-700); }
+.mock__row .grow { flex: 1; }
+.mock__row small { font-size: 12px; color: var(--gray-500); font-weight: 400; }
+.mock__ava { width: 26px; height: 26px; border-radius: 50%; flex: none; }
+.mock__ava svg { width: 100%; height: 100%; border-radius: 50%; }
+.mock__times { display: flex; flex-wrap: wrap; gap: 6px; }
+.mock__time { padding: 7px 10px; border-radius: 10px; border: 1px solid var(--gray-200); background: var(--white); font-size: 12.5px; font-weight: 500; }
+.mock__time.is-on { background: var(--navy-900); border-color: var(--navy-900); color: var(--white); }
+.mock__check { display: flex; align-items: center; gap: 10px; font-weight: 500; }
+.mock__check .box { width: 20px; height: 20px; border-radius: 6px; display: grid; place-items: center; background: var(--navy-900); color: var(--white); flex: none; }
+.mock__check .box .ico { width: 13px; height: 13px; stroke-width: 2.5; }
+.mock__check .box.is-off { background: var(--white); border: 1.5px solid var(--gray-200); }
+
+/* Mentores */
+.mentors__scroller { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px var(--gutter) 24px; margin-inline: calc(-1 * var(--gutter)); scrollbar-width: none; }
+.mentors__scroller::-webkit-scrollbar { display: none; }
+.mcard {
+  scroll-snap-align: center; flex: 0 0 min(86%, 360px);
+  display: flex; flex-direction: column; gap: 18px;
+  background: var(--white); color: var(--gray-700); border-radius: var(--radius-xl); padding: 24px;
+  box-shadow: 0 24px 48px rgba(3, 12, 26, .32);
+  transition: transform .3s var(--ease);
+}
+.mcard__top { display: flex; align-items: center; gap: 16px; }
+.mcard__id h3 { font-size: 24px; letter-spacing: -.02em; color: var(--navy-900); }
+.mcard__route { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 6px; margin-top: 4px; font-size: 14.5px; line-height: 20px; color: var(--gray-500); }
+.mcard__route .flag { width: 20px; height: 20px; }
+.mcard__route span + .flag { margin-left: 2px; }
+.mcard__meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.rating { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px 5px 9px; border-radius: var(--radius-pill); background: var(--gray-100); color: var(--navy-900); font-size: 14px; font-weight: 600; line-height: 20px; }
+.rating .ico { width: 15px; height: 15px; fill: var(--orange-500); stroke: var(--orange-500); }
+.mcard__quote { font-family: var(--font-display); font-weight: 600; font-size: 19px; line-height: 1.32; letter-spacing: -.01em; color: var(--navy-900); text-wrap: balance; }
+.facts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 16px; padding-top: 18px; border-top: 1px solid var(--gray-100); }
+.facts dt { font-size: 12px; line-height: 16px; color: var(--gray-500); font-weight: 500; letter-spacing: .02em; }
+.facts dd { margin-top: 3px; font-size: 15px; line-height: 20px; font-weight: 600; color: var(--navy-900); }
+.mcard__foot { margin-top: auto; display: grid; gap: 14px; justify-items: start; }
+.mcard__foot .btn { justify-self: stretch; }
+.mentors__note { margin-top: 6px; font-size: 14px; color: #9FB0C8; display: flex; gap: 8px; align-items: center; }
+.mentors__note .ico { width: 16px; height: 16px; }
+.become {
+  margin-top: clamp(32px, 5vw, 56px); border-radius: var(--radius-xl); background: var(--navy-800);
+  padding: clamp(24px, 4vw, 40px); display: grid; gap: 20px; align-items: center;
+  border: 1px solid rgba(255, 255, 255, .08);
+}
+.become h3 { font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.1rem); }
+.become p { margin-top: 8px; color: #C6D2E4; max-width: 38em; }
+
+/* Que podes encontrar */
+.topics { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.topic { padding: 20px; border-radius: var(--radius-lg); background: var(--white); border: 1px solid var(--gray-100); transition: transform .25s var(--ease), box-shadow .25s, border-color .25s; }
+.topic:hover { transform: translateY(-3px); box-shadow: var(--shadow-card); border-color: var(--gray-200); }
+.topic__icon { width: 46px; height: 46px; border-radius: 14px; background: var(--blue-100); color: var(--navy-700); display: grid; place-items: center; }
+.topic__icon .ico { width: 22px; height: 22px; }
+.topic h3 { margin-top: 16px; font-size: 18px; letter-spacing: -.01em; }
+.topic p { margin-top: 6px; font-size: 14.5px; line-height: 1.5; color: var(--gray-500); }
+.callout {
+  margin-top: clamp(28px, 4vw, 40px); display: flex; gap: 14px; align-items: flex-start; padding: 20px 22px;
+  border-radius: var(--radius-lg); background: var(--gray-50); border: 1px solid var(--gray-200); color: var(--navy-900);
+}
+.callout .ico { width: 24px; height: 24px; margin-top: 1px; color: var(--navy-700); }
+.callout p { font-size: 15.5px; line-height: 1.6; color: var(--gray-700); }
+.callout strong { color: var(--navy-900); }
+
+/* Servicios */
+.plans { display: grid; gap: 16px; }
+.plan { background: var(--white); border-radius: var(--radius-xl); border: 1px solid var(--gray-100); box-shadow: var(--shadow-card); padding: 28px; display: flex; flex-direction: column; gap: 18px; }
+.plan__top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.plan__icon { width: 46px; height: 46px; border-radius: 14px; background: var(--blue-100); color: var(--navy-700); display: grid; place-items: center; }
+.plan__icon .ico { width: 22px; height: 22px; }
+.plan h3 { font-size: 24px; letter-spacing: -.02em; }
+.plan__sub { margin-top: 4px; font-size: 15px; color: var(--gray-500); }
+.plan__price { font-family: var(--font-display); font-weight: 750; font-size: 56px; line-height: 1; letter-spacing: -.04em; color: var(--navy-900); }
+.plan__price small { display: block; margin-bottom: 8px; font: 600 14px/1 var(--font-text); letter-spacing: .02em; color: var(--gray-500); }
+.plan__list { display: grid; gap: 12px; padding-top: 18px; border-top: 1px solid var(--gray-100); font-size: 15.5px; line-height: 1.45; }
+.plan__list li { display: flex; gap: 10px; align-items: flex-start; }
+.plan__list .ico { width: 18px; height: 18px; margin-top: 2px; color: var(--blue-500); stroke-width: 2.4; }
+.plan .btn { margin-top: auto; }
+.plans__note { margin-top: 20px; font-size: 14px; color: var(--gray-500); text-align: center; }
+
+/* Seguridad */
+.trust__grid { display: grid; gap: 36px; align-items: start; }
+.trust__items { display: grid; gap: 14px; }
+.trust__item { display: flex; gap: 14px; align-items: flex-start; padding: 16px 0; border-top: 1px solid var(--gray-100); }
+.trust__item:first-child { border-top: 0; padding-top: 0; }
+.trust__ico { width: 40px; height: 40px; border-radius: 12px; background: var(--blue-100); color: var(--blue-500); display: grid; place-items: center; flex: none; }
+.trust__ico .ico { width: 20px; height: 20px; stroke-width: 2.2; }
+.trust__item h3 { font-size: 17.5px; letter-spacing: -.01em; }
+.trust__item p { margin-top: 2px; font-size: 15px; line-height: 1.5; color: var(--gray-500); }
+.verify { background: var(--navy-900); border-radius: var(--radius-xl); padding: clamp(24px, 4vw, 36px); color: #C6D2E4; position: relative; overflow: hidden; isolation: isolate; }
+.verify .dots { position: absolute; right: -20%; bottom: -30%; width: 90%; opacity: .1; z-index: -1; }
+.verify h3 { font-size: 26px; color: var(--white); }
+.verify__steps { margin-top: 26px; display: grid; gap: 0; }
+.vstep { display: flex; gap: 16px; align-items: flex-start; position: relative; padding-bottom: 22px; }
+.vstep:not(:last-child)::before { content: ""; position: absolute; left: 17px; top: 38px; bottom: 2px; width: 2px; background: rgba(255, 255, 255, .16); }
+.vstep__dot { width: 36px; height: 36px; border-radius: 50%; background: var(--orange-500); color: var(--navy-900); display: grid; place-items: center; flex: none; }
+.vstep__dot .ico { width: 18px; height: 18px; stroke-width: 2.6; }
+.vstep h4 { font-size: 18px; color: var(--white); letter-spacing: -.01em; padding-top: 6px; }
+.vstep p { font-size: 14.5px; line-height: 1.5; margin-top: 2px; }
+.verify__result { margin-top: 6px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.verify__note { margin-top: 20px; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, .14); font-size: 14.5px; line-height: 1.55; }
+
+/* Reputacion */
+.rep__grid { display: grid; gap: 36px; align-items: center; }
+.rep__list { margin-top: 26px; display: grid; gap: 12px; }
+.rep__list li { display: flex; align-items: center; gap: 12px; font-weight: 500; color: var(--navy-900); }
+.rep__list .ico { color: var(--orange-700); width: 20px; height: 20px; fill: var(--orange-500); stroke: var(--orange-500); }
+.review { background: var(--white); border-radius: var(--radius-xl); box-shadow: var(--shadow-card); border: 1px solid var(--gray-100); padding: clamp(22px, 4vw, 34px); display: grid; gap: 22px; }
+.review__head { display: flex; align-items: center; gap: 14px; }
+.review__head .avatar { width: 52px; height: 52px; }
+.review__head .avatar .flag { width: 20px; height: 20px; }
+.review__head strong { display: block; font-family: var(--font-display); font-size: 19px; color: var(--navy-900); letter-spacing: -.01em; line-height: 1.2; }
+.review__head span { font-size: 14px; color: var(--gray-500); }
+.review__head .tag-example { margin-left: auto; }
+.crit { display: grid; gap: 14px; }
+.crit__row { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 15.5px; font-weight: 500; color: var(--navy-900); }
+.stars5 { display: inline-flex; gap: 3px; }
+.stars5 .ico { width: 21px; height: 21px; fill: var(--orange-500); stroke: var(--orange-500); stroke-width: 1.5; }
+.stars5 .ico.is-off { fill: var(--gray-100); stroke: var(--gray-200); }
+.review__comment { position: relative; padding: 18px 20px; border-radius: var(--radius-md); background: var(--gray-50); border: 1px solid var(--gray-100); }
+.review__comment p { font-family: var(--font-display); font-weight: 600; font-size: 19px; line-height: 1.35; letter-spacing: -.01em; color: var(--navy-900); }
+.review__comment small { display: block; margin-top: 8px; font-size: 13px; color: var(--gray-500); }
+
+/* CTA final */
+.final { background: var(--navy-900); color: #C6D2E4; padding-block: clamp(72px, 10vw, 140px); position: relative; overflow: hidden; isolation: isolate; text-align: center; }
+.final .dots { position: absolute; left: 50%; top: 50%; width: min(1500px, 190%); transform: translate(-50%, -50%); opacity: .13; z-index: -1; }
+.final::after { content: ""; position: absolute; inset: 0; background: radial-gradient(60% 60% at 50% 50%, rgba(11, 31, 58, .0) 0%, var(--navy-900) 85%); z-index: -1; }
+.final h2 { font-size: clamp(2.1rem, 1rem + 4.2vw, 4rem); line-height: 1.04; letter-spacing: -.03em; max-width: 14em; margin-inline: auto; }
+.final p { margin: 24px auto 0; max-width: 32em; font-size: clamp(1.1rem, 1rem + .5vw, 1.3rem); }
+.final__cta { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.final__cta .btn { flex: 1 1 220px; max-width: 300px; }
+
+/* Pie */
+.footer { background: var(--navy-950); color: #9FB0C8; padding-block: 48px 40px; font-size: 14.5px; }
+.footer__grid { display: grid; gap: 28px; }
+.footer .wordmark { color: var(--white); }
+.footer__tag { margin-top: 12px; max-width: 26em; line-height: 1.55; }
+.footer__legal { max-width: 46em; line-height: 1.6; }
+.footer__legal strong { color: #D5E2F7; font-weight: 600; }
+.footer__links { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+.footer__links a { color: #D5E2F7; text-decoration: none; font-weight: 500; }
+.footer__links a:hover { color: var(--white); text-decoration: underline; text-underline-offset: 4px; }
+.footer__copy { padding-top: 24px; margin-top: 32px; border-top: 1px solid rgba(255, 255, 255, .1); font-size: 13.5px; }
+
+/* Breakpoints (mobile-first) */
+@media (min-width: 640px) {
+  .steps { grid-template-columns: 1fr 1fr; }
+  .topics { grid-template-columns: repeat(4, 1fr); }
+  .nav__actions .btn--ghost { display: inline-flex; }
+  .become { grid-template-columns: 1fr auto; }
+}
+@media (min-width: 900px) {
+  .routes { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .nav__links { display: flex; }
+  .hero__grid { grid-template-columns: 1.02fr 1fr; }
+  .hero__cta .btn { flex: 0 0 auto; }
+  .problem__grid { grid-template-columns: .9fr 1.1fr; gap: 64px; }
+  .plans { grid-template-columns: repeat(3, 1fr); }
+  .trust__grid { grid-template-columns: 1fr 1fr; gap: 64px; }
+  .rep__grid { grid-template-columns: 1fr 1fr; gap: 64px; }
+  .footer__grid { grid-template-columns: 1.1fr 1.4fr; gap: 64px; align-items: start; }
+  .mentors__scroller { display: grid; grid-template-columns: repeat(3, 1fr); overflow: visible; padding: 4px 0 0; margin-inline: 0; }
+  .mcard { flex: initial; }
+  .mcard:hover { transform: translateY(-6px); }
+  .mcard__quote { min-height: calc(1.32em * 4); }
+  .plan__head { min-height: 92px; }
+  .problem__grid > .section-head { position: sticky; top: 108px; }
+  .verify { position: sticky; top: 108px; }
+}
+@media (min-width: 1100px) {
+  .steps { grid-template-columns: repeat(4, 1fr); }
+}
+@media (min-width: 1200px) {
+  .chips { position: absolute; right: 3%; bottom: 4%; display: grid; gap: 14px; padding: 0; }
+}
+@media (max-width: 639px) {
+  .pin-label { font-size: 27px; stroke-width: 7px; }
+  .chips { padding-top: 0; }
+  .chip--mentor { padding: 8px 12px 8px 8px; }
+  .chip--call { display: none; }
+  .chip .avatar { width: 34px; height: 34px; }
+  .chip__icon { width: 34px; height: 34px; }
+  .chip { font-size: 12px; line-height: 15px; gap: 8px; }
+  .chip strong { font-size: 13px; }
+  .mapcard__legend { display: none; }
+}
+
+@media (max-width: 400px) {
+  .route { padding: 14px; gap: 8px; }
+  .route__end { font-size: 15px; gap: 8px; min-width: 0; }
+  .flag--lg { width: 32px; height: 32px; }
+  .route__line { min-width: 10px; }
+  .brand svg { width: 30px; height: 30px; }
+  .wordmark { font-size: 20px; }
+  .nav__actions .btn--sm { padding: 0 14px; font-size: 14px; }
+}
+
+/* 5. MOVIMIENTO ------------------------------------------------------------ */
+.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s var(--ease), transform .7s var(--ease); transition-delay: var(--d, 0ms); }
+.js .reveal.in { opacity: 1; transform: none; }
+
+@keyframes pulse { 0% { transform: scale(.6); opacity: .8; } 100% { transform: scale(2.6); opacity: 0; } }
+@keyframes march { to { stroke-dashoffset: -110; } }
+.arc--net { animation: march 14s linear infinite; }
+@keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+@media (min-width: 1200px) {
+  .chip--mentor { animation: floaty 6s ease-in-out infinite; }
+  .chip--call { animation: floaty 7s ease-in-out -2s infinite; }
+}
+@keyframes popStar { from { transform: scale(.4); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.js .review.reveal .stars5 .ico { opacity: 0; }
+.js .review.reveal.in .stars5 .ico { animation: popStar .45s var(--ease) forwards; animation-delay: calc(var(--d, 0ms) + 250ms + var(--i, 0) * 70ms); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+  .js .reveal { opacity: 1; transform: none; }
+}
+
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><path id="dots-base" d="M4.2 4.2h.01M12.5 4.2h.01M20.8 4.2h.01M29.1 4.2h.01M37.4 4.2h.01M45.8 4.2h.01M54.1 4.2h.01M62.4 4.2h.01M70.7 4.2h.01M79.0 4.2h.01M87.4 4.2h.01M95.7 4.2h.01M104.0 4.2h.01M112.3 4.2h.01M120.6 4.2h.01M129.0 4.2h.01M137.3 4.2h.01M145.6 4.2h.01M153.9 4.2h.01M162.2 4.2h.01M170.6 4.2h.01M178.9 4.2h.01M187.2 4.2h.01M195.5 4.2h.01M203.8 4.2h.01M212.2 4.2h.01M220.5 4.2h.01M228.8 4.2h.01M237.1 4.2h.01M245.4 4.2h.01M253.8 4.2h.01M262.1 4.2h.01M270.4 4.2h.01M278.7 4.2h.01M287.0 4.2h.01M295.4 4.2h.01M303.7 4.2h.01M353.6 4.2h.01M361.9 4.2h.01M370.2 4.2h.01M378.6 4.2h.01M386.9 4.2h.01M395.2 4.2h.01M403.5 4.2h.01M411.8 4.2h.01M420.2 4.2h.01M428.5 4.2h.01M503.4 4.2h.01M511.7 4.2h.01M520.0 4.2h.01M528.3 4.2h.01M536.6 4.2h.01M545.0 4.2h.01M686.4 4.2h.01M694.7 4.2h.01M703.0 4.2h.01M711.4 4.2h.01M719.7 4.2h.01M728.0 4.2h.01M736.3 4.2h.01M4.2 12.5h.01M12.5 12.5h.01M20.8 12.5h.01M29.1 12.5h.01M37.4 12.5h.01M45.8 12.5h.01M54.1 12.5h.01M62.4 12.5h.01M70.7 12.5h.01M79.0 12.5h.01M87.4 12.5h.01M95.7 12.5h.01M104.0 12.5h.01M112.3 12.5h.01M120.6 12.5h.01M129.0 12.5h.01M137.3 12.5h.01M145.6 12.5h.01M153.9 12.5h.01M187.2 12.5h.01M195.5 12.5h.01M203.8 12.5h.01M212.2 12.5h.01M220.5 12.5h.01M228.8 12.5h.01M237.1 12.5h.01M245.4 12.5h.01M253.8 12.5h.01M262.1 12.5h.01M270.4 12.5h.01M278.7 12.5h.01M287.0 12.5h.01M295.4 12.5h.01M303.7 12.5h.01M361.9 12.5h.01M370.2 12.5h.01M378.6 12.5h.01M386.9 12.5h.01M395.2 12.5h.01M403.5 12.5h.01M411.8 12.5h.01M520.0 12.5h.01M528.3 12.5h.01M669.8 12.5h.01M678.1 12.5h.01M686.4 12.5h.01M694.7 12.5h.01M703.0 12.5h.01M711.4 12.5h.01M719.7 12.5h.01M744.6 12.5h.01M4.2 20.8h.01M12.5 20.8h.01M20.8 20.8h.01M29.1 20.8h.01M37.4 20.8h.01M45.8 20.8h.01M54.1 20.8h.01M62.4 20.8h.01M70.7 20.8h.01M79.0 20.8h.01M87.4 20.8h.01M95.7 20.8h.01M104.0 20.8h.01M112.3 20.8h.01M120.6 20.8h.01M129.0 20.8h.01M137.3 20.8h.01M220.5 20.8h.01M228.8 20.8h.01M237.1 20.8h.01M245.4 20.8h.01M253.8 20.8h.01M262.1 20.8h.01M270.4 20.8h.01M278.7 20.8h.01M287.0 20.8h.01M295.4 20.8h.01M370.2 20.8h.01M378.6 20.8h.01M386.9 20.8h.01M395.2 20.8h.01M403.5 20.8h.01M661.4 20.8h.01M669.8 20.8h.01M678.1 20.8h.01M686.4 20.8h.01M694.7 20.8h.01M703.0 20.8h.01M711.4 20.8h.01M736.3 20.8h.01M744.6 20.8h.01M4.2 29.1h.01M12.5 29.1h.01M20.8 29.1h.01M29.1 29.1h.01M37.4 29.1h.01M45.8 29.1h.01M54.1 29.1h.01M62.4 29.1h.01M70.7 29.1h.01M79.0 29.1h.01M87.4 29.1h.01M95.7 29.1h.01M104.0 29.1h.01M112.3 29.1h.01M120.6 29.1h.01M129.0 29.1h.01M137.3 29.1h.01M228.8 29.1h.01M237.1 29.1h.01M245.4 29.1h.01M253.8 29.1h.01M262.1 29.1h.01M270.4 29.1h.01M278.7 29.1h.01M287.0 29.1h.01M395.2 29.1h.01M653.1 29.1h.01M661.4 29.1h.01M669.8 29.1h.01M678.1 29.1h.01M686.4 29.1h.01M694.7 29.1h.01M703.0 29.1h.01M711.4 29.1h.01M744.6 29.1h.01M4.2 37.4h.01M12.5 37.4h.01M20.8 37.4h.01M29.1 37.4h.01M37.4 37.4h.01M45.8 37.4h.01M54.1 37.4h.01M62.4 37.4h.01M70.7 37.4h.01M79.0 37.4h.01M87.4 37.4h.01M95.7 37.4h.01M104.0 37.4h.01M112.3 37.4h.01M120.6 37.4h.01M129.0 37.4h.01M137.3 37.4h.01M228.8 37.4h.01M237.1 37.4h.01M245.4 37.4h.01M253.8 37.4h.01M262.1 37.4h.01M270.4 37.4h.01M278.7 37.4h.01M287.0 37.4h.01M653.1 37.4h.01M661.4 37.4h.01M669.8 37.4h.01M686.4 37.4h.01M694.7 37.4h.01M703.0 37.4h.01M711.4 37.4h.01M4.2 45.8h.01M12.5 45.8h.01M20.8 45.8h.01M29.1 45.8h.01M37.4 45.8h.01M45.8 45.8h.01M54.1 45.8h.01M62.4 45.8h.01M70.7 45.8h.01M79.0 45.8h.01M87.4 45.8h.01M95.7 45.8h.01M104.0 45.8h.01M112.3 45.8h.01M120.6 45.8h.01M129.0 45.8h.01M137.3 45.8h.01M145.6 45.8h.01M153.9 45.8h.01M220.5 45.8h.01M228.8 45.8h.01M237.1 45.8h.01M245.4 45.8h.01M253.8 45.8h.01M262.1 45.8h.01M270.4 45.8h.01M278.7 45.8h.01M287.0 45.8h.01M594.9 45.8h.01M603.2 45.8h.01M611.5 45.8h.01M678.1 45.8h.01M694.7 45.8h.01M703.0 45.8h.01M4.2 54.1h.01M12.5 54.1h.01M20.8 54.1h.01M29.1 54.1h.01M37.4 54.1h.01M45.8 54.1h.01M54.1 54.1h.01M62.4 54.1h.01M70.7 54.1h.01M79.0 54.1h.01M87.4 54.1h.01M95.7 54.1h.01M104.0 54.1h.01M112.3 54.1h.01M120.6 54.1h.01M129.0 54.1h.01M137.3 54.1h.01M145.6 54.1h.01M153.9 54.1h.01M162.2 54.1h.01M170.6 54.1h.01M220.5 54.1h.01M228.8 54.1h.01M237.1 54.1h.01M245.4 54.1h.01M253.8 54.1h.01M262.1 54.1h.01M270.4 54.1h.01M278.7 54.1h.01M287.0 54.1h.01M295.4 54.1h.01M303.7 54.1h.01M603.2 54.1h.01M611.5 54.1h.01M669.8 54.1h.01M694.7 54.1h.01M736.3 54.1h.01M744.6 54.1h.01M4.2 62.4h.01M12.5 62.4h.01M20.8 62.4h.01M29.1 62.4h.01M37.4 62.4h.01M45.8 62.4h.01M54.1 62.4h.01M62.4 62.4h.01M70.7 62.4h.01M79.0 62.4h.01M87.4 62.4h.01M95.7 62.4h.01M104.0 62.4h.01M112.3 62.4h.01M120.6 62.4h.01M129.0 62.4h.01M137.3 62.4h.01M145.6 62.4h.01M153.9 62.4h.01M162.2 62.4h.01M170.6 62.4h.01M178.9 62.4h.01M220.5 62.4h.01M228.8 62.4h.01M237.1 62.4h.01M245.4 62.4h.01M253.8 62.4h.01M262.1 62.4h.01M270.4 62.4h.01M278.7 62.4h.01M287.0 62.4h.01M295.4 62.4h.01M303.7 62.4h.01M312.0 62.4h.01M611.5 62.4h.01M619.8 62.4h.01M703.0 62.4h.01M711.4 62.4h.01M719.7 62.4h.01M728.0 62.4h.01M736.3 62.4h.01M744.6 62.4h.01M4.2 70.7h.01M12.5 70.7h.01M20.8 70.7h.01M29.1 70.7h.01M37.4 70.7h.01M45.8 70.7h.01M54.1 70.7h.01M62.4 70.7h.01M70.7 70.7h.01M79.0 70.7h.01M87.4 70.7h.01M95.7 70.7h.01M104.0 70.7h.01M112.3 70.7h.01M120.6 70.7h.01M129.0 70.7h.01M137.3 70.7h.01M145.6 70.7h.01M153.9 70.7h.01M162.2 70.7h.01M170.6 70.7h.01M178.9 70.7h.01M187.2 70.7h.01M212.2 70.7h.01M220.5 70.7h.01M228.8 70.7h.01M237.1 70.7h.01M245.4 70.7h.01M253.8 70.7h.01M262.1 70.7h.01M270.4 70.7h.01M278.7 70.7h.01M287.0 70.7h.01M295.4 70.7h.01M303.7 70.7h.01M312.0 70.7h.01M320.3 70.7h.01M328.6 70.7h.01M603.2 70.7h.01M611.5 70.7h.01M619.8 70.7h.01M628.2 70.7h.01M653.1 70.7h.01M703.0 70.7h.01M711.4 70.7h.01M719.7 70.7h.01M728.0 70.7h.01M736.3 70.7h.01M744.6 70.7h.01M4.2 79.0h.01M12.5 79.0h.01M20.8 79.0h.01M29.1 79.0h.01M37.4 79.0h.01M45.8 79.0h.01M54.1 79.0h.01M62.4 79.0h.01M70.7 79.0h.01M79.0 79.0h.01M87.4 79.0h.01M95.7 79.0h.01M104.0 79.0h.01M112.3 79.0h.01M120.6 79.0h.01M129.0 79.0h.01M137.3 79.0h.01M145.6 79.0h.01M153.9 79.0h.01M162.2 79.0h.01M170.6 79.0h.01M178.9 79.0h.01M187.2 79.0h.01M195.5 79.0h.01M203.8 79.0h.01M212.2 79.0h.01M220.5 79.0h.01M228.8 79.0h.01M237.1 79.0h.01M245.4 79.0h.01M253.8 79.0h.01M262.1 79.0h.01M270.4 79.0h.01M278.7 79.0h.01M287.0 79.0h.01M295.4 79.0h.01M303.7 79.0h.01M312.0 79.0h.01M320.3 79.0h.01M603.2 79.0h.01M611.5 79.0h.01M619.8 79.0h.01M636.5 79.0h.01M644.8 79.0h.01M653.1 79.0h.01M703.0 79.0h.01M711.4 79.0h.01M719.7 79.0h.01M728.0 79.0h.01M736.3 79.0h.01M744.6 79.0h.01M4.2 87.4h.01M12.5 87.4h.01M20.8 87.4h.01M29.1 87.4h.01M37.4 87.4h.01M45.8 87.4h.01M54.1 87.4h.01M62.4 87.4h.01M70.7 87.4h.01M79.0 87.4h.01M87.4 87.4h.01M95.7 87.4h.01M104.0 87.4h.01M112.3 87.4h.01M120.6 87.4h.01M129.0 87.4h.01M137.3 87.4h.01M145.6 87.4h.01M153.9 87.4h.01M162.2 87.4h.01M170.6 87.4h.01M178.9 87.4h.01M187.2 87.4h.01M195.5 87.4h.01M203.8 87.4h.01M212.2 87.4h.01M220.5 87.4h.01M228.8 87.4h.01M237.1 87.4h.01M245.4 87.4h.01M253.8 87.4h.01M262.1 87.4h.01M270.4 87.4h.01M312.0 87.4h.01M320.3 87.4h.01M619.8 87.4h.01M628.2 87.4h.01M636.5 87.4h.01M644.8 87.4h.01M653.1 87.4h.01M694.7 87.4h.01M703.0 87.4h.01M711.4 87.4h.01M719.7 87.4h.01M728.0 87.4h.01M736.3 87.4h.01M744.6 87.4h.01M4.2 95.7h.01M12.5 95.7h.01M20.8 95.7h.01M29.1 95.7h.01M37.4 95.7h.01M45.8 95.7h.01M54.1 95.7h.01M62.4 95.7h.01M70.7 95.7h.01M79.0 95.7h.01M87.4 95.7h.01M95.7 95.7h.01M104.0 95.7h.01M112.3 95.7h.01M120.6 95.7h.01M129.0 95.7h.01M137.3 95.7h.01M145.6 95.7h.01M153.9 95.7h.01M162.2 95.7h.01M170.6 95.7h.01M178.9 95.7h.01M187.2 95.7h.01M195.5 95.7h.01M203.8 95.7h.01M212.2 95.7h.01M220.5 95.7h.01M228.8 95.7h.01M237.1 95.7h.01M245.4 95.7h.01M253.8 95.7h.01M262.1 95.7h.01M270.4 95.7h.01M278.7 95.7h.01M611.5 95.7h.01M619.8 95.7h.01M628.2 95.7h.01M636.5 95.7h.01M644.8 95.7h.01M653.1 95.7h.01M661.4 95.7h.01M694.7 95.7h.01M703.0 95.7h.01M711.4 95.7h.01M719.7 95.7h.01M728.0 95.7h.01M736.3 95.7h.01M744.6 95.7h.01M4.2 104.0h.01M12.5 104.0h.01M20.8 104.0h.01M29.1 104.0h.01M37.4 104.0h.01M45.8 104.0h.01M54.1 104.0h.01M62.4 104.0h.01M70.7 104.0h.01M79.0 104.0h.01M87.4 104.0h.01M95.7 104.0h.01M104.0 104.0h.01M112.3 104.0h.01M120.6 104.0h.01M129.0 104.0h.01M137.3 104.0h.01M145.6 104.0h.01M153.9 104.0h.01M162.2 104.0h.01M170.6 104.0h.01M178.9 104.0h.01M187.2 104.0h.01M195.5 104.0h.01M203.8 104.0h.01M212.2 104.0h.01M220.5 104.0h.01M228.8 104.0h.01M237.1 104.0h.01M245.4 104.0h.01M253.8 104.0h.01M262.1 104.0h.01M270.4 104.0h.01M278.7 104.0h.01M287.0 104.0h.01M295.4 104.0h.01M619.8 104.0h.01M628.2 104.0h.01M636.5 104.0h.01M644.8 104.0h.01M653.1 104.0h.01M661.4 104.0h.01M669.8 104.0h.01M678.1 104.0h.01M686.4 104.0h.01M694.7 104.0h.01M703.0 104.0h.01M711.4 104.0h.01M719.7 104.0h.01M728.0 104.0h.01M736.3 104.0h.01M744.6 104.0h.01M4.2 112.3h.01M12.5 112.3h.01M20.8 112.3h.01M29.1 112.3h.01M37.4 112.3h.01M45.8 112.3h.01M54.1 112.3h.01M62.4 112.3h.01M70.7 112.3h.01M79.0 112.3h.01M87.4 112.3h.01M95.7 112.3h.01M104.0 112.3h.01M112.3 112.3h.01M120.6 112.3h.01M129.0 112.3h.01M137.3 112.3h.01M145.6 112.3h.01M153.9 112.3h.01M162.2 112.3h.01M170.6 112.3h.01M178.9 112.3h.01M187.2 112.3h.01M195.5 112.3h.01M203.8 112.3h.01M212.2 112.3h.01M220.5 112.3h.01M228.8 112.3h.01M237.1 112.3h.01M245.4 112.3h.01M253.8 112.3h.01M262.1 112.3h.01M270.4 112.3h.01M278.7 112.3h.01M287.0 112.3h.01M619.8 112.3h.01M628.2 112.3h.01M636.5 112.3h.01M644.8 112.3h.01M653.1 112.3h.01M661.4 112.3h.01M669.8 112.3h.01M678.1 112.3h.01M686.4 112.3h.01M703.0 112.3h.01M711.4 112.3h.01M719.7 112.3h.01M728.0 112.3h.01M736.3 112.3h.01M744.6 112.3h.01M4.2 120.6h.01M12.5 120.6h.01M20.8 120.6h.01M29.1 120.6h.01M37.4 120.6h.01M45.8 120.6h.01M54.1 120.6h.01M62.4 120.6h.01M70.7 120.6h.01M79.0 120.6h.01M87.4 120.6h.01M95.7 120.6h.01M104.0 120.6h.01M112.3 120.6h.01M120.6 120.6h.01M129.0 120.6h.01M137.3 120.6h.01M145.6 120.6h.01M153.9 120.6h.01M162.2 120.6h.01M170.6 120.6h.01M178.9 120.6h.01M187.2 120.6h.01M195.5 120.6h.01M203.8 120.6h.01M212.2 120.6h.01M220.5 120.6h.01M228.8 120.6h.01M237.1 120.6h.01M245.4 120.6h.01M253.8 120.6h.01M628.2 120.6h.01M636.5 120.6h.01M686.4 120.6h.01M694.7 120.6h.01M719.7 120.6h.01M728.0 120.6h.01M736.3 120.6h.01M744.6 120.6h.01M4.2 129.0h.01M12.5 129.0h.01M20.8 129.0h.01M29.1 129.0h.01M37.4 129.0h.01M45.8 129.0h.01M54.1 129.0h.01M62.4 129.0h.01M70.7 129.0h.01M79.0 129.0h.01M87.4 129.0h.01M95.7 129.0h.01M104.0 129.0h.01M112.3 129.0h.01M120.6 129.0h.01M129.0 129.0h.01M137.3 129.0h.01M145.6 129.0h.01M153.9 129.0h.01M162.2 129.0h.01M170.6 129.0h.01M178.9 129.0h.01M187.2 129.0h.01M195.5 129.0h.01M203.8 129.0h.01M212.2 129.0h.01M220.5 129.0h.01M228.8 129.0h.01M237.1 129.0h.01M245.4 129.0h.01M694.7 129.0h.01M703.0 129.0h.01M728.0 129.0h.01M736.3 129.0h.01M744.6 129.0h.01M4.2 137.3h.01M12.5 137.3h.01M20.8 137.3h.01M29.1 137.3h.01M37.4 137.3h.01M45.8 137.3h.01M54.1 137.3h.01M62.4 137.3h.01M70.7 137.3h.01M79.0 137.3h.01M87.4 137.3h.01M95.7 137.3h.01M104.0 137.3h.01M112.3 137.3h.01M120.6 137.3h.01M129.0 137.3h.01M137.3 137.3h.01M145.6 137.3h.01M153.9 137.3h.01M162.2 137.3h.01M170.6 137.3h.01M178.9 137.3h.01M187.2 137.3h.01M195.5 137.3h.01M203.8 137.3h.01M212.2 137.3h.01M220.5 137.3h.01M228.8 137.3h.01M669.8 137.3h.01M711.4 137.3h.01M736.3 137.3h.01M4.2 145.6h.01M12.5 145.6h.01M20.8 145.6h.01M29.1 145.6h.01M37.4 145.6h.01M45.8 145.6h.01M54.1 145.6h.01M62.4 145.6h.01M70.7 145.6h.01M79.0 145.6h.01M87.4 145.6h.01M95.7 145.6h.01M104.0 145.6h.01M112.3 145.6h.01M120.6 145.6h.01M129.0 145.6h.01M137.3 145.6h.01M145.6 145.6h.01M153.9 145.6h.01M162.2 145.6h.01M170.6 145.6h.01M178.9 145.6h.01M187.2 145.6h.01M195.5 145.6h.01M203.8 145.6h.01M212.2 145.6h.01M220.5 145.6h.01M228.8 145.6h.01M694.7 145.6h.01M703.0 145.6h.01M736.3 145.6h.01M744.6 145.6h.01M4.2 153.9h.01M12.5 153.9h.01M20.8 153.9h.01M29.1 153.9h.01M37.4 153.9h.01M45.8 153.9h.01M54.1 153.9h.01M62.4 153.9h.01M70.7 153.9h.01M79.0 153.9h.01M87.4 153.9h.01M95.7 153.9h.01M104.0 153.9h.01M112.3 153.9h.01M120.6 153.9h.01M129.0 153.9h.01M137.3 153.9h.01M145.6 153.9h.01M153.9 153.9h.01M162.2 153.9h.01M170.6 153.9h.01M178.9 153.9h.01M187.2 153.9h.01M195.5 153.9h.01M203.8 153.9h.01M212.2 153.9h.01M220.5 153.9h.01M228.8 153.9h.01M636.5 153.9h.01M644.8 153.9h.01M653.1 153.9h.01M661.4 153.9h.01M669.8 153.9h.01M4.2 162.2h.01M12.5 162.2h.01M20.8 162.2h.01M29.1 162.2h.01M37.4 162.2h.01M45.8 162.2h.01M54.1 162.2h.01M62.4 162.2h.01M70.7 162.2h.01M79.0 162.2h.01M87.4 162.2h.01M95.7 162.2h.01M104.0 162.2h.01M112.3 162.2h.01M120.6 162.2h.01M129.0 162.2h.01M137.3 162.2h.01M145.6 162.2h.01M153.9 162.2h.01M162.2 162.2h.01M170.6 162.2h.01M178.9 162.2h.01M187.2 162.2h.01M195.5 162.2h.01M203.8 162.2h.01M212.2 162.2h.01M220.5 162.2h.01M594.9 162.2h.01M603.2 162.2h.01M611.5 162.2h.01M619.8 162.2h.01M628.2 162.2h.01M636.5 162.2h.01M644.8 162.2h.01M653.1 162.2h.01M661.4 162.2h.01M669.8 162.2h.01M678.1 162.2h.01M12.5 170.6h.01M20.8 170.6h.01M29.1 170.6h.01M37.4 170.6h.01M45.8 170.6h.01M54.1 170.6h.01M62.4 170.6h.01M70.7 170.6h.01M79.0 170.6h.01M87.4 170.6h.01M95.7 170.6h.01M104.0 170.6h.01M112.3 170.6h.01M120.6 170.6h.01M129.0 170.6h.01M137.3 170.6h.01M145.6 170.6h.01M153.9 170.6h.01M162.2 170.6h.01M170.6 170.6h.01M178.9 170.6h.01M187.2 170.6h.01M195.5 170.6h.01M203.8 170.6h.01M212.2 170.6h.01M586.6 170.6h.01M594.9 170.6h.01M603.2 170.6h.01M611.5 170.6h.01M619.8 170.6h.01M628.2 170.6h.01M636.5 170.6h.01M644.8 170.6h.01M653.1 170.6h.01M661.4 170.6h.01M669.8 170.6h.01M678.1 170.6h.01M45.8 178.9h.01M54.1 178.9h.01M79.0 178.9h.01M87.4 178.9h.01M95.7 178.9h.01M104.0 178.9h.01M112.3 178.9h.01M120.6 178.9h.01M129.0 178.9h.01M137.3 178.9h.01M145.6 178.9h.01M153.9 178.9h.01M162.2 178.9h.01M170.6 178.9h.01M178.9 178.9h.01M187.2 178.9h.01M195.5 178.9h.01M578.2 178.9h.01M586.6 178.9h.01M594.9 178.9h.01M603.2 178.9h.01M611.5 178.9h.01M619.8 178.9h.01M628.2 178.9h.01M636.5 178.9h.01M644.8 178.9h.01M653.1 178.9h.01M661.4 178.9h.01M669.8 178.9h.01M678.1 178.9h.01M686.4 178.9h.01M694.7 178.9h.01M703.0 178.9h.01M711.4 178.9h.01M719.7 178.9h.01M728.0 178.9h.01M736.3 178.9h.01M744.6 178.9h.01M79.0 187.2h.01M87.4 187.2h.01M95.7 187.2h.01M104.0 187.2h.01M112.3 187.2h.01M120.6 187.2h.01M129.0 187.2h.01M137.3 187.2h.01M145.6 187.2h.01M153.9 187.2h.01M195.5 187.2h.01M203.8 187.2h.01M578.2 187.2h.01M586.6 187.2h.01M594.9 187.2h.01M603.2 187.2h.01M611.5 187.2h.01M619.8 187.2h.01M628.2 187.2h.01M636.5 187.2h.01M644.8 187.2h.01M653.1 187.2h.01M661.4 187.2h.01M669.8 187.2h.01M678.1 187.2h.01M686.4 187.2h.01M694.7 187.2h.01M703.0 187.2h.01M711.4 187.2h.01M719.7 187.2h.01M728.0 187.2h.01M736.3 187.2h.01M744.6 187.2h.01M104.0 195.5h.01M112.3 195.5h.01M120.6 195.5h.01M195.5 195.5h.01M203.8 195.5h.01M569.9 195.5h.01M578.2 195.5h.01M586.6 195.5h.01M594.9 195.5h.01M603.2 195.5h.01M611.5 195.5h.01M619.8 195.5h.01M628.2 195.5h.01M636.5 195.5h.01M644.8 195.5h.01M653.1 195.5h.01M661.4 195.5h.01M669.8 195.5h.01M678.1 195.5h.01M686.4 195.5h.01M694.7 195.5h.01M703.0 195.5h.01M711.4 195.5h.01M719.7 195.5h.01M728.0 195.5h.01M736.3 195.5h.01M744.6 195.5h.01M112.3 203.8h.01M203.8 203.8h.01M561.6 203.8h.01M569.9 203.8h.01M578.2 203.8h.01M586.6 203.8h.01M594.9 203.8h.01M603.2 203.8h.01M611.5 203.8h.01M619.8 203.8h.01M628.2 203.8h.01M636.5 203.8h.01M644.8 203.8h.01M653.1 203.8h.01M661.4 203.8h.01M669.8 203.8h.01M678.1 203.8h.01M686.4 203.8h.01M694.7 203.8h.01M703.0 203.8h.01M711.4 203.8h.01M719.7 203.8h.01M728.0 203.8h.01M736.3 203.8h.01M744.6 203.8h.01M553.3 212.2h.01M561.6 212.2h.01M569.9 212.2h.01M578.2 212.2h.01M586.6 212.2h.01M594.9 212.2h.01M603.2 212.2h.01M611.5 212.2h.01M619.8 212.2h.01M628.2 212.2h.01M636.5 212.2h.01M644.8 212.2h.01M653.1 212.2h.01M661.4 212.2h.01M669.8 212.2h.01M678.1 212.2h.01M686.4 212.2h.01M694.7 212.2h.01M703.0 212.2h.01M711.4 212.2h.01M719.7 212.2h.01M728.0 212.2h.01M736.3 212.2h.01M744.6 212.2h.01M545.0 220.5h.01M553.3 220.5h.01M561.6 220.5h.01M569.9 220.5h.01M578.2 220.5h.01M586.6 220.5h.01M594.9 220.5h.01M603.2 220.5h.01M611.5 220.5h.01M619.8 220.5h.01M628.2 220.5h.01M636.5 220.5h.01M644.8 220.5h.01M653.1 220.5h.01M661.4 220.5h.01M669.8 220.5h.01M678.1 220.5h.01M686.4 220.5h.01M694.7 220.5h.01M703.0 220.5h.01M711.4 220.5h.01M719.7 220.5h.01M728.0 220.5h.01M736.3 220.5h.01M744.6 220.5h.01M187.2 228.8h.01M195.5 228.8h.01M203.8 228.8h.01M212.2 228.8h.01M545.0 228.8h.01M553.3 228.8h.01M561.6 228.8h.01M569.9 228.8h.01M578.2 228.8h.01M586.6 228.8h.01M594.9 228.8h.01M603.2 228.8h.01M611.5 228.8h.01M619.8 228.8h.01M628.2 228.8h.01M636.5 228.8h.01M644.8 228.8h.01M653.1 228.8h.01M661.4 228.8h.01M669.8 228.8h.01M678.1 228.8h.01M686.4 228.8h.01M694.7 228.8h.01M703.0 228.8h.01M711.4 228.8h.01M719.7 228.8h.01M728.0 228.8h.01M736.3 228.8h.01M744.6 228.8h.01M220.5 237.1h.01M228.8 237.1h.01M237.1 237.1h.01M536.6 237.1h.01M545.0 237.1h.01M553.3 237.1h.01M561.6 237.1h.01M569.9 237.1h.01M578.2 237.1h.01M586.6 237.1h.01M594.9 237.1h.01M603.2 237.1h.01M611.5 237.1h.01M619.8 237.1h.01M628.2 237.1h.01M636.5 237.1h.01M644.8 237.1h.01M653.1 237.1h.01M661.4 237.1h.01M669.8 237.1h.01M678.1 237.1h.01M686.4 237.1h.01M694.7 237.1h.01M703.0 237.1h.01M711.4 237.1h.01M719.7 237.1h.01M728.0 237.1h.01M736.3 237.1h.01M744.6 237.1h.01M237.1 245.4h.01M245.4 245.4h.01M253.8 245.4h.01M262.1 245.4h.01M545.0 245.4h.01M553.3 245.4h.01M561.6 245.4h.01M569.9 245.4h.01M578.2 245.4h.01M586.6 245.4h.01M594.9 245.4h.01M603.2 245.4h.01M611.5 245.4h.01M619.8 245.4h.01M628.2 245.4h.01M636.5 245.4h.01M644.8 245.4h.01M653.1 245.4h.01M661.4 245.4h.01M669.8 245.4h.01M678.1 245.4h.01M686.4 245.4h.01M694.7 245.4h.01M703.0 245.4h.01M711.4 245.4h.01M719.7 245.4h.01M728.0 245.4h.01M736.3 245.4h.01M744.6 245.4h.01M153.9 253.8h.01M162.2 253.8h.01M545.0 253.8h.01M553.3 253.8h.01M561.6 253.8h.01M569.9 253.8h.01M578.2 253.8h.01M586.6 253.8h.01M594.9 253.8h.01M603.2 253.8h.01M611.5 253.8h.01M619.8 253.8h.01M628.2 253.8h.01M636.5 253.8h.01M644.8 253.8h.01M653.1 253.8h.01M661.4 253.8h.01M669.8 253.8h.01M678.1 253.8h.01M686.4 253.8h.01M694.7 253.8h.01M703.0 253.8h.01M711.4 253.8h.01M719.7 253.8h.01M728.0 253.8h.01M736.3 253.8h.01M744.6 253.8h.01M153.9 262.1h.01M162.2 262.1h.01M170.6 262.1h.01M178.9 262.1h.01M187.2 262.1h.01M536.6 262.1h.01M545.0 262.1h.01M553.3 262.1h.01M561.6 262.1h.01M569.9 262.1h.01M578.2 262.1h.01M586.6 262.1h.01M594.9 262.1h.01M603.2 262.1h.01M611.5 262.1h.01M619.8 262.1h.01M628.2 262.1h.01M636.5 262.1h.01M644.8 262.1h.01M653.1 262.1h.01M661.4 262.1h.01M669.8 262.1h.01M678.1 262.1h.01M686.4 262.1h.01M694.7 262.1h.01M703.0 262.1h.01M711.4 262.1h.01M719.7 262.1h.01M728.0 262.1h.01M736.3 262.1h.01M744.6 262.1h.01M153.9 270.4h.01M162.2 270.4h.01M170.6 270.4h.01M178.9 270.4h.01M187.2 270.4h.01M536.6 270.4h.01M545.0 270.4h.01M553.3 270.4h.01M561.6 270.4h.01M569.9 270.4h.01M578.2 270.4h.01M586.6 270.4h.01M594.9 270.4h.01M603.2 270.4h.01M611.5 270.4h.01M619.8 270.4h.01M628.2 270.4h.01M636.5 270.4h.01M644.8 270.4h.01M653.1 270.4h.01M661.4 270.4h.01M669.8 270.4h.01M678.1 270.4h.01M686.4 270.4h.01M694.7 270.4h.01M703.0 270.4h.01M711.4 270.4h.01M719.7 270.4h.01M728.0 270.4h.01M736.3 270.4h.01M744.6 270.4h.01M178.9 278.7h.01M187.2 278.7h.01M545.0 278.7h.01M553.3 278.7h.01M561.6 278.7h.01M569.9 278.7h.01M578.2 278.7h.01M586.6 278.7h.01M594.9 278.7h.01M603.2 278.7h.01M611.5 278.7h.01M619.8 278.7h.01M628.2 278.7h.01M636.5 278.7h.01M644.8 278.7h.01M653.1 278.7h.01M661.4 278.7h.01M669.8 278.7h.01M678.1 278.7h.01M686.4 278.7h.01M694.7 278.7h.01M703.0 278.7h.01M711.4 278.7h.01M719.7 278.7h.01M728.0 278.7h.01M736.3 278.7h.01M744.6 278.7h.01M187.2 287.0h.01M253.8 287.0h.01M262.1 287.0h.01M270.4 287.0h.01M278.7 287.0h.01M553.3 287.0h.01M561.6 287.0h.01M569.9 287.0h.01M578.2 287.0h.01M586.6 287.0h.01M594.9 287.0h.01M603.2 287.0h.01M611.5 287.0h.01M619.8 287.0h.01M628.2 287.0h.01M636.5 287.0h.01M644.8 287.0h.01M653.1 287.0h.01M661.4 287.0h.01M669.8 287.0h.01M678.1 287.0h.01M686.4 287.0h.01M694.7 287.0h.01M703.0 287.0h.01M711.4 287.0h.01M719.7 287.0h.01M728.0 287.0h.01M736.3 287.0h.01M744.6 287.0h.01M195.5 295.4h.01M203.8 295.4h.01M212.2 295.4h.01M253.8 295.4h.01M262.1 295.4h.01M270.4 295.4h.01M278.7 295.4h.01M287.0 295.4h.01M295.4 295.4h.01M303.7 295.4h.01M561.6 295.4h.01M569.9 295.4h.01M578.2 295.4h.01M586.6 295.4h.01M594.9 295.4h.01M603.2 295.4h.01M611.5 295.4h.01M619.8 295.4h.01M628.2 295.4h.01M636.5 295.4h.01M644.8 295.4h.01M653.1 295.4h.01M661.4 295.4h.01M669.8 295.4h.01M678.1 295.4h.01M686.4 295.4h.01M694.7 295.4h.01M703.0 295.4h.01M711.4 295.4h.01M719.7 295.4h.01M728.0 295.4h.01M736.3 295.4h.01M744.6 295.4h.01M212.2 303.7h.01M253.8 303.7h.01M262.1 303.7h.01M270.4 303.7h.01M278.7 303.7h.01M287.0 303.7h.01M295.4 303.7h.01M303.7 303.7h.01M312.0 303.7h.01M561.6 303.7h.01M569.9 303.7h.01M578.2 303.7h.01M586.6 303.7h.01M594.9 303.7h.01M603.2 303.7h.01M611.5 303.7h.01M619.8 303.7h.01M628.2 303.7h.01M636.5 303.7h.01M644.8 303.7h.01M653.1 303.7h.01M661.4 303.7h.01M669.8 303.7h.01M678.1 303.7h.01M686.4 303.7h.01M694.7 303.7h.01M703.0 303.7h.01M711.4 303.7h.01M719.7 303.7h.01M728.0 303.7h.01M736.3 303.7h.01M744.6 303.7h.01M278.7 312.0h.01M287.0 312.0h.01M295.4 312.0h.01M303.7 312.0h.01M312.0 312.0h.01M320.3 312.0h.01M569.9 312.0h.01M578.2 312.0h.01M586.6 312.0h.01M594.9 312.0h.01M603.2 312.0h.01M611.5 312.0h.01M619.8 312.0h.01M628.2 312.0h.01M653.1 312.0h.01M661.4 312.0h.01M669.8 312.0h.01M678.1 312.0h.01M686.4 312.0h.01M694.7 312.0h.01M703.0 312.0h.01M711.4 312.0h.01M719.7 312.0h.01M728.0 312.0h.01M736.3 312.0h.01M744.6 312.0h.01M220.5 320.3h.01M278.7 320.3h.01M287.0 320.3h.01M295.4 320.3h.01M303.7 320.3h.01M586.6 320.3h.01M661.4 320.3h.01M669.8 320.3h.01M678.1 320.3h.01M686.4 320.3h.01M694.7 320.3h.01M703.0 320.3h.01M711.4 320.3h.01M719.7 320.3h.01M728.0 320.3h.01M736.3 320.3h.01M744.6 320.3h.01M278.7 328.6h.01M287.0 328.6h.01M678.1 328.6h.01M686.4 328.6h.01M694.7 328.6h.01M703.0 328.6h.01M711.4 328.6h.01M719.7 328.6h.01M728.0 328.6h.01M736.3 328.6h.01M744.6 328.6h.01M212.2 337.0h.01M270.4 337.0h.01M678.1 337.0h.01M686.4 337.0h.01M694.7 337.0h.01M703.0 337.0h.01M711.4 337.0h.01M719.7 337.0h.01M728.0 337.0h.01M736.3 337.0h.01M744.6 337.0h.01M212.2 345.3h.01M220.5 345.3h.01M228.8 345.3h.01M262.1 345.3h.01M270.4 345.3h.01M678.1 345.3h.01M686.4 345.3h.01M694.7 345.3h.01M703.0 345.3h.01M711.4 345.3h.01M719.7 345.3h.01M728.0 345.3h.01M736.3 345.3h.01M744.6 345.3h.01M212.2 353.6h.01M220.5 353.6h.01M237.1 353.6h.01M245.4 353.6h.01M253.8 353.6h.01M262.1 353.6h.01M678.1 353.6h.01M686.4 353.6h.01M694.7 353.6h.01M703.0 353.6h.01M711.4 353.6h.01M719.7 353.6h.01M728.0 353.6h.01M736.3 353.6h.01M744.6 353.6h.01M212.2 361.9h.01M253.8 361.9h.01M686.4 361.9h.01M694.7 361.9h.01M703.0 361.9h.01M711.4 361.9h.01M719.7 361.9h.01M728.0 361.9h.01M736.3 361.9h.01M744.6 361.9h.01M694.7 370.2h.01M703.0 370.2h.01M711.4 370.2h.01M719.7 370.2h.01M728.0 370.2h.01M736.3 370.2h.01M744.6 370.2h.01M694.7 378.6h.01M703.0 378.6h.01M711.4 378.6h.01M719.7 378.6h.01M728.0 378.6h.01M736.3 378.6h.01M744.6 378.6h.01M694.7 386.9h.01M703.0 386.9h.01M711.4 386.9h.01M719.7 386.9h.01M728.0 386.9h.01M736.3 386.9h.01M744.6 386.9h.01M270.4 395.2h.01M278.7 395.2h.01M694.7 395.2h.01M703.0 395.2h.01M711.4 395.2h.01M719.7 395.2h.01M728.0 395.2h.01M736.3 395.2h.01M744.6 395.2h.01M270.4 403.5h.01M278.7 403.5h.01M287.0 403.5h.01M694.7 403.5h.01M703.0 403.5h.01M711.4 403.5h.01M719.7 403.5h.01M728.0 403.5h.01M736.3 403.5h.01M744.6 403.5h.01M270.4 411.8h.01M278.7 411.8h.01M287.0 411.8h.01M295.4 411.8h.01M694.7 411.8h.01M703.0 411.8h.01M711.4 411.8h.01M719.7 411.8h.01M728.0 411.8h.01M736.3 411.8h.01M744.6 411.8h.01M270.4 420.2h.01M278.7 420.2h.01M287.0 420.2h.01M295.4 420.2h.01M303.7 420.2h.01M686.4 420.2h.01M694.7 420.2h.01M703.0 420.2h.01M711.4 420.2h.01M719.7 420.2h.01M728.0 420.2h.01M736.3 420.2h.01M744.6 420.2h.01M270.4 428.5h.01M278.7 428.5h.01M287.0 428.5h.01M295.4 428.5h.01M303.7 428.5h.01M312.0 428.5h.01M686.4 428.5h.01M694.7 428.5h.01M703.0 428.5h.01M711.4 428.5h.01M719.7 428.5h.01M728.0 428.5h.01M736.3 428.5h.01M744.6 428.5h.01M262.1 436.8h.01M270.4 436.8h.01M278.7 436.8h.01M287.0 436.8h.01M295.4 436.8h.01M303.7 436.8h.01M312.0 436.8h.01M694.7 436.8h.01M703.0 436.8h.01M711.4 436.8h.01M719.7 436.8h.01M728.0 436.8h.01M736.3 436.8h.01M744.6 436.8h.01M270.4 445.1h.01M278.7 445.1h.01M287.0 445.1h.01M295.4 445.1h.01M303.7 445.1h.01M312.0 445.1h.01M694.7 445.1h.01M703.0 445.1h.01M711.4 445.1h.01M719.7 445.1h.01M728.0 445.1h.01M736.3 445.1h.01M744.6 445.1h.01M270.4 453.4h.01M278.7 453.4h.01M287.0 453.4h.01M295.4 453.4h.01M303.7 453.4h.01M312.0 453.4h.01M320.3 453.4h.01M703.0 453.4h.01M711.4 453.4h.01M719.7 453.4h.01M728.0 453.4h.01M736.3 453.4h.01M744.6 453.4h.01M303.7 461.8h.01M312.0 461.8h.01M320.3 461.8h.01M703.0 461.8h.01M711.4 461.8h.01M719.7 461.8h.01M728.0 461.8h.01M736.3 461.8h.01M744.6 461.8h.01M312.0 470.1h.01M320.3 470.1h.01M703.0 470.1h.01M711.4 470.1h.01M719.7 470.1h.01M728.0 470.1h.01M736.3 470.1h.01M744.6 470.1h.01M320.3 478.4h.01M703.0 478.4h.01M711.4 478.4h.01M719.7 478.4h.01M728.0 478.4h.01M736.3 478.4h.01M744.6 478.4h.01M711.4 486.7h.01M719.7 486.7h.01M728.0 486.7h.01M736.3 486.7h.01M744.6 486.7h.01M711.4 495.0h.01M719.7 495.0h.01M728.0 495.0h.01M736.3 495.0h.01M744.6 495.0h.01M328.6 503.4h.01M719.7 503.4h.01M728.0 503.4h.01M736.3 503.4h.01M744.6 503.4h.01M328.6 511.7h.01M337.0 511.7h.01M719.7 511.7h.01M728.0 511.7h.01M736.3 511.7h.01M744.6 511.7h.01M328.6 520.0h.01M337.0 520.0h.01M345.3 520.0h.01M719.7 520.0h.01M728.0 520.0h.01M736.3 520.0h.01M744.6 520.0h.01"/><path id="dots-sec" d="M669.8 62.4h.01M678.1 62.4h.01M686.4 62.4h.01M694.7 62.4h.01M661.4 70.7h.01M669.8 70.7h.01M678.1 70.7h.01M686.4 70.7h.01M694.7 70.7h.01M661.4 79.0h.01M669.8 79.0h.01M678.1 79.0h.01M686.4 79.0h.01M694.7 79.0h.01M661.4 87.4h.01M669.8 87.4h.01M678.1 87.4h.01M686.4 87.4h.01M669.8 95.7h.01M678.1 95.7h.01M686.4 95.7h.01M578.2 120.6h.01M586.6 120.6h.01M594.9 120.6h.01M603.2 120.6h.01M611.5 120.6h.01M619.8 120.6h.01M578.2 129.0h.01M586.6 129.0h.01M594.9 129.0h.01M603.2 129.0h.01M611.5 129.0h.01M619.8 129.0h.01M628.2 129.0h.01M578.2 137.3h.01M586.6 137.3h.01M594.9 137.3h.01M603.2 137.3h.01M611.5 137.3h.01M619.8 137.3h.01M578.2 145.6h.01M586.6 145.6h.01M594.9 145.6h.01M603.2 145.6h.01M611.5 145.6h.01M619.8 145.6h.01M594.9 153.9h.01M29.1 178.9h.01M37.4 178.9h.01M62.4 178.9h.01M70.7 178.9h.01M37.4 187.2h.01M45.8 187.2h.01M54.1 187.2h.01M62.4 187.2h.01M70.7 187.2h.01M45.8 195.5h.01M54.1 195.5h.01M62.4 195.5h.01M70.7 195.5h.01M79.0 195.5h.01M87.4 195.5h.01M95.7 195.5h.01M54.1 203.8h.01M62.4 203.8h.01M70.7 203.8h.01M79.0 203.8h.01M87.4 203.8h.01M95.7 203.8h.01M104.0 203.8h.01M62.4 212.2h.01M70.7 212.2h.01M79.0 212.2h.01M87.4 212.2h.01M95.7 212.2h.01M104.0 212.2h.01M112.3 212.2h.01M70.7 220.5h.01M79.0 220.5h.01M87.4 220.5h.01M95.7 220.5h.01M104.0 220.5h.01M112.3 220.5h.01M79.0 228.8h.01M87.4 228.8h.01M95.7 228.8h.01M104.0 228.8h.01M112.3 228.8h.01M79.0 237.1h.01M87.4 237.1h.01M95.7 237.1h.01M104.0 237.1h.01M112.3 237.1h.01M153.9 237.1h.01M162.2 237.1h.01M170.6 237.1h.01M87.4 245.4h.01M95.7 245.4h.01M104.0 245.4h.01M112.3 245.4h.01M120.6 245.4h.01M153.9 245.4h.01M162.2 245.4h.01M104.0 253.8h.01M112.3 253.8h.01M120.6 253.8h.01M129.0 253.8h.01M137.3 253.8h.01M145.6 253.8h.01M145.6 262.1h.01M237.1 287.0h.01M245.4 287.0h.01M228.8 295.4h.01M237.1 295.4h.01M245.4 295.4h.01M228.8 303.7h.01M237.1 303.7h.01M245.4 303.7h.01M228.8 312.0h.01M237.1 312.0h.01M245.4 312.0h.01M253.8 312.0h.01M262.1 312.0h.01M270.4 312.0h.01M228.8 320.3h.01M237.1 320.3h.01M245.4 320.3h.01M253.8 320.3h.01M262.1 320.3h.01M270.4 320.3h.01M312.0 320.3h.01M320.3 320.3h.01M328.6 320.3h.01M337.0 320.3h.01M345.3 320.3h.01M353.6 320.3h.01M220.5 328.6h.01M228.8 328.6h.01M237.1 328.6h.01M245.4 328.6h.01M253.8 328.6h.01M262.1 328.6h.01M270.4 328.6h.01M295.4 328.6h.01M303.7 328.6h.01M312.0 328.6h.01M320.3 328.6h.01M328.6 328.6h.01M337.0 328.6h.01M345.3 328.6h.01M353.6 328.6h.01M220.5 337.0h.01M228.8 337.0h.01M237.1 337.0h.01M245.4 337.0h.01M253.8 337.0h.01M262.1 337.0h.01M278.7 337.0h.01M287.0 337.0h.01M295.4 337.0h.01M303.7 337.0h.01M312.0 337.0h.01M320.3 337.0h.01M328.6 337.0h.01M337.0 337.0h.01M345.3 337.0h.01M353.6 337.0h.01M361.9 337.0h.01M237.1 345.3h.01M245.4 345.3h.01M253.8 345.3h.01M278.7 345.3h.01M287.0 345.3h.01M295.4 345.3h.01M303.7 345.3h.01M312.0 345.3h.01M320.3 345.3h.01M328.6 345.3h.01M337.0 345.3h.01M345.3 345.3h.01M353.6 345.3h.01M361.9 345.3h.01M370.2 345.3h.01M228.8 353.6h.01M270.4 353.6h.01M278.7 353.6h.01M287.0 353.6h.01M295.4 353.6h.01M303.7 353.6h.01M312.0 353.6h.01M320.3 353.6h.01M328.6 353.6h.01M337.0 353.6h.01M345.3 353.6h.01M353.6 353.6h.01M361.9 353.6h.01M370.2 353.6h.01M378.6 353.6h.01M386.9 353.6h.01M220.5 361.9h.01M228.8 361.9h.01M237.1 361.9h.01M245.4 361.9h.01M262.1 361.9h.01M270.4 361.9h.01M278.7 361.9h.01M287.0 361.9h.01M295.4 361.9h.01M303.7 361.9h.01M312.0 361.9h.01M320.3 361.9h.01M328.6 361.9h.01M337.0 361.9h.01M345.3 361.9h.01M353.6 361.9h.01M361.9 361.9h.01M370.2 361.9h.01M378.6 361.9h.01M386.9 361.9h.01M395.2 361.9h.01M403.5 361.9h.01M411.8 361.9h.01M420.2 361.9h.01M203.8 370.2h.01M212.2 370.2h.01M220.5 370.2h.01M228.8 370.2h.01M237.1 370.2h.01M245.4 370.2h.01M253.8 370.2h.01M262.1 370.2h.01M270.4 370.2h.01M278.7 370.2h.01M287.0 370.2h.01M295.4 370.2h.01M303.7 370.2h.01M312.0 370.2h.01M320.3 370.2h.01M328.6 370.2h.01M337.0 370.2h.01M345.3 370.2h.01M353.6 370.2h.01M361.9 370.2h.01M370.2 370.2h.01M378.6 370.2h.01M386.9 370.2h.01M395.2 370.2h.01M403.5 370.2h.01M411.8 370.2h.01M420.2 370.2h.01M428.5 370.2h.01M436.8 370.2h.01M212.2 378.6h.01M220.5 378.6h.01M228.8 378.6h.01M237.1 378.6h.01M245.4 378.6h.01M253.8 378.6h.01M262.1 378.6h.01M270.4 378.6h.01M278.7 378.6h.01M287.0 378.6h.01M295.4 378.6h.01M303.7 378.6h.01M312.0 378.6h.01M320.3 378.6h.01M328.6 378.6h.01M337.0 378.6h.01M345.3 378.6h.01M353.6 378.6h.01M361.9 378.6h.01M370.2 378.6h.01M378.6 378.6h.01M386.9 378.6h.01M395.2 378.6h.01M403.5 378.6h.01M411.8 378.6h.01M420.2 378.6h.01M428.5 378.6h.01M436.8 378.6h.01M220.5 386.9h.01M228.8 386.9h.01M237.1 386.9h.01M245.4 386.9h.01M253.8 386.9h.01M262.1 386.9h.01M270.4 386.9h.01M278.7 386.9h.01M287.0 386.9h.01M295.4 386.9h.01M303.7 386.9h.01M312.0 386.9h.01M320.3 386.9h.01M328.6 386.9h.01M337.0 386.9h.01M345.3 386.9h.01M353.6 386.9h.01M361.9 386.9h.01M370.2 386.9h.01M378.6 386.9h.01M386.9 386.9h.01M395.2 386.9h.01M403.5 386.9h.01M411.8 386.9h.01M420.2 386.9h.01M428.5 386.9h.01M436.8 386.9h.01M220.5 395.2h.01M228.8 395.2h.01M237.1 395.2h.01M245.4 395.2h.01M253.8 395.2h.01M262.1 395.2h.01M287.0 395.2h.01M295.4 395.2h.01M303.7 395.2h.01M312.0 395.2h.01M320.3 395.2h.01M328.6 395.2h.01M337.0 395.2h.01M345.3 395.2h.01M353.6 395.2h.01M361.9 395.2h.01M370.2 395.2h.01M378.6 395.2h.01M386.9 395.2h.01M395.2 395.2h.01M403.5 395.2h.01M411.8 395.2h.01M420.2 395.2h.01M428.5 395.2h.01M436.8 395.2h.01M228.8 403.5h.01M237.1 403.5h.01M245.4 403.5h.01M253.8 403.5h.01M262.1 403.5h.01M295.4 403.5h.01M303.7 403.5h.01M312.0 403.5h.01M320.3 403.5h.01M328.6 403.5h.01M337.0 403.5h.01M345.3 403.5h.01M353.6 403.5h.01M361.9 403.5h.01M370.2 403.5h.01M378.6 403.5h.01M386.9 403.5h.01M395.2 403.5h.01M403.5 403.5h.01M411.8 403.5h.01M420.2 403.5h.01M428.5 403.5h.01M228.8 411.8h.01M237.1 411.8h.01M245.4 411.8h.01M253.8 411.8h.01M262.1 411.8h.01M303.7 411.8h.01M312.0 411.8h.01M320.3 411.8h.01M328.6 411.8h.01M337.0 411.8h.01M345.3 411.8h.01M353.6 411.8h.01M361.9 411.8h.01M370.2 411.8h.01M378.6 411.8h.01M386.9 411.8h.01M395.2 411.8h.01M403.5 411.8h.01M411.8 411.8h.01M420.2 411.8h.01M237.1 420.2h.01M245.4 420.2h.01M253.8 420.2h.01M262.1 420.2h.01M312.0 420.2h.01M320.3 420.2h.01M328.6 420.2h.01M337.0 420.2h.01M345.3 420.2h.01M353.6 420.2h.01M361.9 420.2h.01M370.2 420.2h.01M378.6 420.2h.01M386.9 420.2h.01M395.2 420.2h.01M403.5 420.2h.01M411.8 420.2h.01M420.2 420.2h.01M253.8 428.5h.01M262.1 428.5h.01M320.3 428.5h.01M328.6 428.5h.01M337.0 428.5h.01M345.3 428.5h.01M353.6 428.5h.01M361.9 428.5h.01M370.2 428.5h.01M378.6 428.5h.01M386.9 428.5h.01M395.2 428.5h.01M403.5 428.5h.01M411.8 428.5h.01M420.2 428.5h.01M320.3 436.8h.01M328.6 436.8h.01M337.0 436.8h.01M345.3 436.8h.01M353.6 436.8h.01M361.9 436.8h.01M370.2 436.8h.01M378.6 436.8h.01M386.9 436.8h.01M395.2 436.8h.01M403.5 436.8h.01M411.8 436.8h.01M420.2 436.8h.01M262.1 445.1h.01M320.3 445.1h.01M328.6 445.1h.01M337.0 445.1h.01M345.3 445.1h.01M353.6 445.1h.01M361.9 445.1h.01M370.2 445.1h.01M378.6 445.1h.01M386.9 445.1h.01M395.2 445.1h.01M403.5 445.1h.01M411.8 445.1h.01M262.1 453.4h.01M328.6 453.4h.01M337.0 453.4h.01M345.3 453.4h.01M353.6 453.4h.01M361.9 453.4h.01M370.2 453.4h.01M378.6 453.4h.01M386.9 453.4h.01M395.2 453.4h.01M403.5 453.4h.01M411.8 453.4h.01M262.1 461.8h.01M270.4 461.8h.01M328.6 461.8h.01M337.0 461.8h.01M345.3 461.8h.01M353.6 461.8h.01M361.9 461.8h.01M370.2 461.8h.01M378.6 461.8h.01M386.9 461.8h.01M395.2 461.8h.01M262.1 470.1h.01M270.4 470.1h.01M328.6 470.1h.01M337.0 470.1h.01M345.3 470.1h.01M353.6 470.1h.01M361.9 470.1h.01M370.2 470.1h.01M378.6 470.1h.01M262.1 478.4h.01M328.6 478.4h.01M337.0 478.4h.01M345.3 478.4h.01M353.6 478.4h.01M361.9 478.4h.01M370.2 478.4h.01M253.8 486.7h.01M262.1 486.7h.01M328.6 486.7h.01M337.0 486.7h.01M345.3 486.7h.01M353.6 486.7h.01M361.9 486.7h.01M370.2 486.7h.01M253.8 495.0h.01M262.1 495.0h.01M328.6 495.0h.01M337.0 495.0h.01M345.3 495.0h.01M353.6 495.0h.01M361.9 495.0h.01M253.8 503.4h.01M337.0 503.4h.01M345.3 503.4h.01M353.6 503.4h.01M253.8 511.7h.01M345.3 511.7h.01M353.6 511.7h.01M253.8 520.0h.01M253.8 528.3h.01M253.8 536.6h.01M245.4 545.0h.01M245.4 553.3h.01M245.4 561.6h.01M245.4 569.9h.01M245.4 578.2h.01M245.4 586.6h.01M237.1 594.9h.01M245.4 594.9h.01M237.1 603.2h.01M245.4 603.2h.01M245.4 611.5h.01M253.8 619.8h.01"/><path id="dots-hot" d="M578.2 62.4h.01M586.6 62.4h.01M578.2 70.7h.01M586.6 70.7h.01M278.7 461.8h.01M287.0 461.8h.01M295.4 461.8h.01M278.7 470.1h.01M287.0 470.1h.01M295.4 470.1h.01M303.7 470.1h.01M270.4 478.4h.01M278.7 478.4h.01M287.0 478.4h.01M295.4 478.4h.01M303.7 478.4h.01M312.0 478.4h.01M270.4 486.7h.01M278.7 486.7h.01M287.0 486.7h.01M295.4 486.7h.01M303.7 486.7h.01M312.0 486.7h.01M320.3 486.7h.01M270.4 495.0h.01M278.7 495.0h.01M287.0 495.0h.01M295.4 495.0h.01M303.7 495.0h.01M312.0 495.0h.01M320.3 495.0h.01M262.1 503.4h.01M270.4 503.4h.01M278.7 503.4h.01M287.0 503.4h.01M295.4 503.4h.01M303.7 503.4h.01M312.0 503.4h.01M320.3 503.4h.01M262.1 511.7h.01M270.4 511.7h.01M278.7 511.7h.01M287.0 511.7h.01M295.4 511.7h.01M303.7 511.7h.01M312.0 511.7h.01M320.3 511.7h.01M262.1 520.0h.01M270.4 520.0h.01M278.7 520.0h.01M287.0 520.0h.01M295.4 520.0h.01M303.7 520.0h.01M312.0 520.0h.01M320.3 520.0h.01M262.1 528.3h.01M270.4 528.3h.01M278.7 528.3h.01M287.0 528.3h.01M295.4 528.3h.01M303.7 528.3h.01M312.0 528.3h.01M320.3 528.3h.01M262.1 536.6h.01M270.4 536.6h.01M278.7 536.6h.01M287.0 536.6h.01M295.4 536.6h.01M303.7 536.6h.01M312.0 536.6h.01M320.3 536.6h.01M253.8 545.0h.01M262.1 545.0h.01M270.4 545.0h.01M278.7 545.0h.01M287.0 545.0h.01M295.4 545.0h.01M303.7 545.0h.01M253.8 553.3h.01M262.1 553.3h.01M270.4 553.3h.01M278.7 553.3h.01M287.0 553.3h.01M253.8 561.6h.01M262.1 561.6h.01M270.4 561.6h.01M278.7 561.6h.01M287.0 561.6h.01M253.8 569.9h.01M262.1 569.9h.01M270.4 569.9h.01M278.7 569.9h.01M287.0 569.9h.01M253.8 578.2h.01M262.1 578.2h.01M270.4 578.2h.01M278.7 578.2h.01M253.8 586.6h.01M262.1 586.6h.01M270.4 586.6h.01M253.8 594.9h.01M262.1 594.9h.01M270.4 594.9h.01M253.8 603.2h.01M262.1 603.2h.01M270.4 603.2h.01M253.8 611.5h.01M262.1 611.5h.01M262.1 619.8h.01"/></defs><symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></symbol><symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2.5 4.5 5.5v6c0 4.8 3.2 8.8 7.5 10 4.3-1.2 7.5-5.2 7.5-10v-6z"/><path d="m9 12 2.2 2.2L15.5 10"/></symbol><symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol><symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol><symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6.5V12l3.5 2"/></symbol><symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol><symbol id="i-scatter" viewBox="0 0 24 24"><circle cx="6" cy="7" r="2.4"/><circle cx="18" cy="6" r="2.4"/><circle cx="12" cy="17.5" r="2.4"/><path d="M8.4 7.2l7.2-.9M7.4 9.1l3.4 6.3M16.9 8.3l-3.6 7"/></symbol><symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol><symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol><symbol id="i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol><symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol><symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.7l2.9 5.9 6.5.95-4.7 4.6 1.1 6.5L12 17.6l-5.8 3.05 1.1-6.5-4.7-4.6 6.5-.95z"/></symbol><symbol id="i-star-line" viewBox="0 0 24 24"><path d="M12 2.7l2.9 5.9 6.5.95-4.7 4.6 1.1 6.5L12 17.6l-5.8 3.05 1.1-6.5-4.7-4.6 6.5-.95z"/></symbol><symbol id="i-badge" viewBox="0 0 24 24"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.78 4.78 4 4 0 0 1-6.74 0 4 4 0 0 1-4.78-4.78 4 4 0 0 1 0-6.75z"/><path d="m9 12 2 2 4-4"/></symbol><symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></symbol><symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></symbol><symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M2 13h20"/></symbol><symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></symbol><symbol id="i-languages" viewBox="0 0 24 24"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></symbol><symbol id="i-rocket" viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></symbol><symbol id="i-cv" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><circle cx="12" cy="13" r="2.2"/><path d="M8.5 19a3.5 3.5 0 0 1 7 0"/></symbol><symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol><symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol><symbol id="i-map" viewBox="0 0 24 24"><path d="M3 6.5 9 3.5l6 3 6-3v14l-6 3-6-3-6 3z"/><path d="M9 3.5v14M15 6.5v14"/></symbol><symbol id="i-id" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="8.5" cy="11" r="2"/><path d="M5.2 16a3.3 3.3 0 0 1 6.6 0"/><path d="M14 10h5M14 14h4"/></symbol><symbol id="i-plane" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></symbol><symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol><symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol><symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></symbol><symbol id="i-message" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></symbol><symbol id="f-ar" viewBox="0 0 24 24"><rect width="24" height="24" fill="#74ACDF"/><rect y="8" width="24" height="8" fill="#fff"/><circle cx="12" cy="12" r="2.1" fill="#F6B40E"/></symbol><symbol id="f-ie" viewBox="0 0 24 24"><rect width="8" height="24" fill="#169B62"/><rect x="8" width="8" height="24" fill="#fff"/><rect x="16" width="8" height="24" fill="#FF883E"/></symbol><symbol id="f-es" viewBox="0 0 24 24"><rect width="24" height="24" fill="#C60B1E"/><rect y="6" width="24" height="12" fill="#FFC400"/></symbol><symbol id="f-br" viewBox="0 0 24 24"><rect width="24" height="24" fill="#009C3B"/><path d="M12 3.2 21.6 12 12 20.8 2.4 12z" fill="#FFDF00"/><circle cx="12" cy="12" r="4.4" fill="#002776"/><path d="M8 11.2c2.6-.9 5.6-.4 8 1.1" stroke="#fff" stroke-width="1" fill="none"/></symbol><symbol id="f-pt" viewBox="0 0 24 24"><rect width="24" height="24" fill="#FF0000"/><rect width="9.6" height="24" fill="#006600"/><circle cx="9.6" cy="12" r="3.2" fill="#FFE000"/><circle cx="9.6" cy="12" r="1.7" fill="#fff" stroke="#D0021B" stroke-width=".9"/></symbol><symbol id="f-mx" viewBox="0 0 24 24"><rect width="8" height="24" fill="#006847"/><rect x="8" width="8" height="24" fill="#fff"/><rect x="16" width="8" height="24" fill="#CE1126"/><circle cx="12" cy="12" r="2.3" fill="#A47A4A"/></symbol><symbol id="f-cl" viewBox="0 0 24 24"><rect width="24" height="24" fill="#fff"/><rect y="12" width="24" height="12" fill="#D52B1E"/><rect width="12" height="12" fill="#0039A6"/><path d="M6.00 2.40L6.85 4.83L9.42 4.89L7.38 6.45L8.12 8.91L6.00 7.45L3.88 8.91L4.62 6.45L2.58 4.89L5.15 4.83z" fill="#fff"/></symbol><symbol id="f-co" viewBox="0 0 24 24"><rect width="24" height="12" fill="#FCD116"/><rect y="12" width="24" height="6" fill="#003893"/><rect y="18" width="24" height="6" fill="#CE1126"/></symbol><symbol id="f-pe" viewBox="0 0 24 24"><rect width="24" height="24" fill="#D91023"/><rect x="8" width="8" height="24" fill="#fff"/></symbol><symbol id="f-de" viewBox="0 0 24 24"><rect width="24" height="8" fill="#111"/><rect y="8" width="24" height="8" fill="#DD0000"/><rect y="16" width="24" height="8" fill="#FFCE00"/></symbol><symbol id="av-martin" viewBox="0 0 80 80"><circle cx="40" cy="40" r="40" fill="#E3EDFC"/><path d="M8 82c0-15 13-24 32-24s32 9 32 24z" fill="#1B437D"/><rect x="34" y="44" width="12" height="17" rx="5" fill="#E7B38C"/><ellipse cx="40" cy="35" rx="13" ry="15" fill="#E7B38C"/><path d="M26.6 33c-1.4-12 5.6-18.2 13.4-18.2S54.8 21 53.4 33c-2-5.4-5-8.6-9.4-9.4-4 1.4-11.4 1.6-17.4 9.4z" fill="#3B2A20"/></symbol><symbol id="av-camila" viewBox="0 0 80 80"><circle cx="40" cy="40" r="40" fill="#FFEBD9"/><path d="M24 38c-2.6-15 4.6-24 16-24s18.6 9 16 24l3 22H21z" fill="#2A1B14"/><path d="M8 82c0-15 13-24 32-24s32 9 32 24z" fill="#2F6FDB"/><rect x="34" y="44" width="12" height="17" rx="5" fill="#C98C63"/><ellipse cx="40" cy="35" rx="13" ry="15" fill="#C98C63"/><path d="M26.8 31c2.4-8.6 8.4-12.4 14.4-11.6 6 .6 10.2 4.6 12 11.6-6-3.4-12.6-4.4-26.4 0z" fill="#2A1B14"/></symbol><symbol id="av-lucas" viewBox="0 0 80 80"><circle cx="40" cy="40" r="40" fill="#E8ECF2"/><path d="M8 82c0-15 13-24 32-24s32 9 32 24z" fill="#3A475C"/><rect x="34" y="44" width="12" height="17" rx="5" fill="#8D5A3B"/><ellipse cx="40" cy="35" rx="13" ry="15" fill="#8D5A3B"/><path d="M26.8 31.5c-.4-10.4 5.8-16.6 13.2-16.6S53.6 21 53.2 31.5c-3.2-4.4-8.2-6.4-13.2-6.4s-10 2-13.2 6.4z" fill="#161B22"/></symbol><symbol id="av-valentina" viewBox="0 0 80 80"><circle cx="40" cy="40" r="40" fill="#FFEBD9"/><path d="M24.5 40c-3-16 3.6-26 15.5-26s18.5 10 15.5 26l1.2 9H23.3z" fill="#5A3521"/><path d="M8 82c0-15 13-24 32-24s32 9 32 24z" fill="#12305A"/><rect x="34" y="44" width="12" height="17" rx="5" fill="#EDBE98"/><ellipse cx="40" cy="35" rx="13" ry="15" fill="#EDBE98"/><path d="M26.6 32c1.2-8.6 7.2-14 14-13.2 7 .8 11.2 5.8 12.6 13.2-4.2-5-9-7-13.4-7-5.2 0-9.6 2.6-13.2 7z" fill="#5A3521"/></symbol><symbol id="av-diego" viewBox="0 0 80 80"><circle cx="40" cy="40" r="40" fill="#D5E2F7"/><path d="M8 82c0-15 13-24 32-24s32 9 32 24z" fill="#FF7A1A"/><rect x="34" y="44" width="12" height="17" rx="5" fill="#B9805A"/><ellipse cx="40" cy="35" rx="13" ry="15" fill="#B9805A"/><path d="M26.8 31.5c-.6-10.6 5.6-16.8 13.2-16.8S53.8 20.9 53.2 31.5c-3.2-4.6-8.2-6.6-13.2-6.6s-10 2-13.2 6.6z" fill="#1A1410"/><path d="M27.4 37c.8 9.4 6 14.6 12.6 14.6S51.8 46.4 52.6 37c-3 4.2-7.2 6.4-12.6 6.4S30.4 41.2 27.4 37z" fill="#1A1410"/></symbol><symbol id="av-sofia" viewBox="0 0 80 80"><circle cx="40" cy="40" r="40" fill="#E8ECF2"/><circle cx="40" cy="13.5" r="7.6" fill="#7A3B22"/><path d="M8 82c0-15 13-24 32-24s32 9 32 24z" fill="#8DB6F5"/><rect x="34" y="44" width="12" height="17" rx="5" fill="#D9A277"/><ellipse cx="40" cy="35" rx="13" ry="15" fill="#D9A277"/><path d="M26.8 31c1.6-8.2 7.4-12.6 13.2-12.6S51.6 22.8 53.2 31c-4-3.4-8.4-4.8-13.2-4.8S30.8 27.6 26.8 31z" fill="#7A3B22"/></symbol><symbol id="logo-mark" viewBox="0 0 64 64">
+  <path d="M32 2.5C18.4 2.5 7.5 13.2 7.5 26.4c0 8.8 5.2 16.6 12.4 23.8 4.6 4.6 8.6 8.5 12.1 12.3 3.5-3.8 7.5-7.7 12.1-12.3 7.2-7.2 12.4-15 12.4-23.8C56.5 13.2 45.6 2.5 32 2.5z" fill="#0B1F3A"/>
+  <circle cx="25" cy="19.6" r="4.9" fill="#fff"/>
+  <path d="M16.2 40.5a8.8 11 0 0 1 17.6 0z" fill="#fff"/>
+  <circle cx="39" cy="19.6" r="4.9" fill="#FF7A1A"/>
+  <path d="M30.2 40.5a8.8 11 0 0 1 17.6 0z" fill="#FF7A1A" stroke="#0B1F3A" stroke-width="1.6" stroke-linejoin="round"/>
+</symbol><symbol id="logo-mark-inv" viewBox="0 0 64 64">
+  <path d="M32 2.5C18.4 2.5 7.5 13.2 7.5 26.4c0 8.8 5.2 16.6 12.4 23.8 4.6 4.6 8.6 8.5 12.1 12.3 3.5-3.8 7.5-7.7 12.1-12.3 7.2-7.2 12.4-15 12.4-23.8C56.5 13.2 45.6 2.5 32 2.5z" fill="#fff"/>
+  <circle cx="25" cy="19.6" r="4.9" fill="#0B1F3A"/>
+  <path d="M16.2 40.5a8.8 11 0 0 1 17.6 0z" fill="#0B1F3A"/>
+  <circle cx="39" cy="19.6" r="4.9" fill="#FF7A1A"/>
+  <path d="M30.2 40.5a8.8 11 0 0 1 17.6 0z" fill="#FF7A1A" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/>
+</symbol></svg>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="top">
+  <div class="container nav__inner">
+    <a class="brand" href="#top" aria-label="RedEmigra, ir al inicio"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#logo-mark"/></svg><span class="wordmark"><span>Red</span>Emigra</span></a>
+    <nav class="nav__links" aria-label="Principal">
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#mentores">Mentores</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#confianza">Confianza</a>
+    </nav>
+    <div class="nav__actions">
+      <a class="btn btn--ghost btn--sm nav__login" data-cta="ingresar" href="/ingresar">Ingresar</a>
+      <a class="btn btn--ghost btn--sm" data-cta="mentor" href="#registro">Quiero ser mentor</a>
+      <a class="btn btn--primary btn--sm" data-cta="emigrar" href="#registro">Quiero emigrar</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ 1. HERO ============ -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      <span class="pill"><span class="dot" aria-hidden="true"></span>Acompañamiento migratorio, de persona a persona</span>
+      <h1 id="hero-title">Conecta con personas <em>que ya hicieron el camino</em> que vos estás por empezar.</h1>
+      <p class="hero__lead">Recibí acompañamiento real de inmigrantes que viven en el país al que querés llegar.</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" data-cta="emigrar" href="#registro">Quiero emigrar <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn--ghost" data-cta="mentor" href="#registro">Quiero ser mentor</a>
+      </div>
+      <p class="hero__note"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg><span>Experiencia real de otros inmigrantes. No reemplaza el asesoramiento legal, migratorio o financiero profesional.</span></p>
+    </div>
+
+    <div class="hero__visual">
+      <div class="mapcard on-dark">
+        <svg class="mapcard__svg" viewBox="0 0 748.8 634.4" role="img" aria-label="Mapa animado con rutas migratorias de ejemplo entre países de Latinoamérica y Europa: Brasil a Portugal, Chile a Irlanda, México a Alemania, Colombia a España, Argentina a Irlanda y Perú a España"><use href="#dots-base" class="map-base"/><use href="#dots-sec" class="map-sec"/><use href="#dots-hot" class="map-hot"/><path class="arc arc--net" d="M381.7 465.4Q401.6 256.9 576.7 142.0"/><path class="arc arc--net" d="M256.6 517.1Q333.6 224.5 591.2 65.8"/><path class="arc arc--net" d="M108.7 242.3Q332.4 -77.8 693.7 70.2"/><path class="arc arc--net" d="M238.8 318.7Q366.1 116.1 604.8 133.1"/><path class="arc arc--net" d="M320.3 523.1Q364.3 240.3 591.2 65.8"/><path class="arc arc--net" d="M223.4 405.9Q332.3 155.1 604.8 133.1"/><path class="arc arc--go is-on" pathLength="1" d="M381.7 465.4Q401.6 256.9 576.7 142.0" data-from="sp" data-to="lis" data-ava="lucas" data-name="Lucas" data-rating="5.0" data-desc="Brasileño en Portugal" data-fc="br" data-slot="Mar 18:00"/><path class="arc arc--go" pathLength="1" d="M256.6 517.1Q333.6 224.5 591.2 65.8" data-from="scl" data-to="dub" data-ava="valentina" data-name="Valentina" data-rating="4.9" data-desc="Chilena en Irlanda" data-fc="cl" data-slot="Mié 19:30"/><path class="arc arc--go" pathLength="1" d="M108.7 242.3Q332.4 -77.8 693.7 70.2" data-from="mx" data-to="ber" data-ava="diego" data-name="Diego" data-rating="4.8" data-desc="Mexicano en Alemania" data-fc="mx" data-slot="Jue 18:00"/><path class="arc arc--go" pathLength="1" d="M238.8 318.7Q366.1 116.1 604.8 133.1" data-from="bog" data-to="mad" data-ava="camila" data-name="Camila" data-rating="4.8" data-desc="Colombiana en España" data-fc="co" data-slot="Vie 17:30"/><path class="arc arc--go" pathLength="1" d="M320.3 523.1Q364.3 240.3 591.2 65.8" data-from="ba" data-to="dub" data-ava="martin" data-name="Martín" data-rating="4.9" data-desc="Argentino en Irlanda" data-fc="ar" data-slot="Lun 20:00"/><path class="arc arc--go" pathLength="1" d="M223.4 405.9Q332.3 155.1 604.8 133.1" data-from="lim" data-to="mad" data-ava="sofia" data-name="Sofía" data-rating="4.9" data-desc="Peruana en España" data-fc="pe" data-slot="Sáb 11:00"/><g class="suitcase" opacity="0" aria-hidden="true"><g transform="scale(1.25)"><g><animateTransform attributeName="transform" type="rotate" values="-7;7;-7" dur="1.3s" repeatCount="indefinite"/><path d="M-5.5 -9V-12a2.6 2.6 0 0 1 2.6-2.6h5.8a2.6 2.6 0 0 1 2.6 2.6V-9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><rect x="-14" y="-9" width="28" height="21" rx="5.5" fill="#FF7A1A" stroke="#fff" stroke-width="2"/><rect x="-7.5" y="-9" width="3.2" height="21" fill="#0B1F3A" opacity=".2"/><rect x="4.3" y="-9" width="3.2" height="21" fill="#0B1F3A" opacity=".2"/><rect x="-10.5" y="-5" width="7" height="2.4" rx="1.2" fill="#fff" opacity=".6"/><circle cx="-8" cy="14.6" r="2.1" fill="#fff"/><circle cx="8" cy="14.6" r="2.1" fill="#fff"/></g></g></g><g class="pin is-on" data-city="sp" transform="translate(381.7 465.4)"><circle class="pin-ring" r="10"/><circle class="pin-core" r="3.8"/></g><g class="pin is-on" data-city="lis" transform="translate(576.7 142.0)"><circle class="pin-ring" r="10"/><circle class="pin-core" r="3.8"/></g><g class="pin" data-city="scl" transform="translate(256.6 517.1)"><circle class="pin-ring" r="10"/><circle class="pin-core" r="3.8"/></g><g class="pin" data-city="dub" transform="translate(591.2 65.8)"><circle class="pin-ring" r="10"/><circle class="pin-core" r="3.8"/></g><g class="pin" data-city="mx" transform="translate(108.7 242.3)"><circle class="pin-ring" r="10"/><circle class="pin-core" r="3.8"/></g><g class="pin" data-city="ber" transform="translate(693.7 70.2)"><circle class="pin-ring" r="10"/><circle class="pin-core" r="3.8"/></g><g class="pin" data-city="bog" transform="translate(238.8 318.7)"><circle class="pin-ring" r="10"/><circle class="pin-core" r="3.8"/></g><g class="pin" data-city="mad" transform="translate(604.8 133.1)"><circle class="pin-ring" r="10"/><circle class="pin-core" r="3.8"/></g><g class="pin" data-city="ba" transform="translate(320.3 523.1)"><circle class="pin-ring" r="10"/><circle class="pin-core" r="3.8"/></g><g class="pin" data-city="lim" transform="translate(223.4 405.9)"><circle class="pin-ring" r="10"/><circle class="pin-core" r="3.8"/></g><text class="pin-label is-on" data-city="sp" x="365.7" y="472.4" text-anchor="end">Brasil</text><text class="pin-label is-on" data-city="lis" x="560.7" y="150.0" text-anchor="end">Portugal</text><text class="pin-label" data-city="scl" x="240.6" y="524.1" text-anchor="end">Chile</text><text class="pin-label" data-city="dub" x="575.2" y="73.8" text-anchor="end">Irlanda</text><text class="pin-label" data-city="mx" x="124.7" y="249.3" text-anchor="start">México</text><text class="pin-label" data-city="ber" x="741.7" y="104.2" text-anchor="end">Alemania</text><text class="pin-label" data-city="bog" x="222.8" y="325.7" text-anchor="end">Colombia</text><text class="pin-label" data-city="mad" x="616.8" y="160.1" text-anchor="start">España</text><text class="pin-label" data-city="ba" x="304.3" y="531.1" text-anchor="end">Argentina</text><text class="pin-label" data-city="lim" x="207.4" y="412.9" text-anchor="end">Perú</text></svg>
+        <span class="mapcard__legend">Rutas y perfiles de ejemplo</span>
+        <button class="map-toggle" type="button" aria-pressed="false" aria-label="Pausar la animación del mapa" hidden>
+          <svg class="ico" aria-hidden="true"><use href="#i-pause"/></svg>
+        </button>
+        <div class="chips" aria-hidden="true">
+        <div class="chip chip--mentor">
+          <div class="avatar"><svg viewBox="0 0 80 80" aria-hidden="true"><use href="#av-lucas"/></svg><svg class="flag" aria-hidden="true"><use href="#f-br"/></svg></div>
+          <div><strong><span data-chip="name">Lucas</span> · <span class="stars"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><span data-chip="rating">5.0</span></span></strong><span data-chip="desc">Brasileño en Portugal</span></div>
+        </div>
+        <div class="chip chip--call">
+          <span class="chip__icon"><svg class="ico" aria-hidden="true"><use href="#i-calendar"/></svg></span>
+          <div><strong>Llamada de 30 min</strong><span data-chip="slot">Mar 18:00</span> · reservada</div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. EL PROBLEMA ============ -->
+<section class="section section--gray" id="problema" aria-labelledby="problema-title">
+  <div class="container">
+    <div class="problem__grid">
+      <div class="section-head reveal" style="margin-bottom:0">
+        <span class="eyebrow">El problema</span>
+        <h2 id="problema-title">Emigrar es una de las decisiones más importantes de una persona.</h2>
+        <p>Y muchas veces la información que hay para tomarla es:</p>
+      </div>
+      <ul class="problem__list">
+        <li class="problem__item reveal"><span class="problem__icon"><svg class="ico" aria-hidden="true"><use href="#i-globe"/></svg></span><div><h3>Demasiado general</h3><p>Guías pensadas para todos que no responden a tu caso.</p></div></li>
+        <li class="problem__item reveal" style="--d:60ms"><span class="problem__icon"><svg class="ico" aria-hidden="true"><use href="#i-search"/></svg></span><div><h3>Difícil de encontrar</h3><p>Buscar lo que necesitás lleva horas y muchas pestañas abiertas.</p></div></li>
+        <li class="problem__item reveal" style="--d:120ms"><span class="problem__icon"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg></span><div><h3>Desactualizada</h3><p>Lo que funcionó hace unos años puede haber cambiado.</p></div></li>
+        <li class="problem__item reveal" style="--d:180ms"><span class="problem__icon"><svg class="ico" aria-hidden="true"><use href="#i-user"/></svg></span><div><h3>Impersonal</h3><p>Nadie te cuenta cómo se vive de verdad ese proceso.</p></div></li>
+        <li class="problem__item reveal" style="--d:240ms"><span class="problem__icon"><svg class="ico" aria-hidden="true"><use href="#i-scatter"/></svg></span><div><h3>Dispersa</h3><p>Foros, grupos, videos y blogs, todo por separado.</p></div></li>
+        <li class="problem__item reveal" style="--d:300ms"><span class="problem__icon"><svg class="ico" aria-hidden="true"><use href="#i-languages"/></svg></span><div><h3>En otro idioma</h3><p>Lo más útil suele estar escrito en un idioma que todavía no dominás.</p></div></li>
+      </ul>
+    </div>
+
+    <div class="quote-band on-dark reveal">
+      <svg class="dots" viewBox="0 0 748.8 634.4" aria-hidden="true"><use href="#dots-base" class="map-dots"/><use href="#dots-sec" class="map-dots"/><use href="#dots-hot" class="map-dots"/></svg>
+      <blockquote>Hay cosas que Google no puede contarte. <span>Las experiencias sí.</span></blockquote>
+      <p>Y muchas de las mejores respuestas las tiene alguien que ya vivió exactamente ese proceso.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. LA SOLUCION ============ -->
+<section class="section" id="solucion" aria-labelledby="solucion-title">
+  <div class="container">
+    <div class="section-head section-head--center reveal" style="max-width:none">
+      <span class="eyebrow">La solución</span>
+    </div>
+    <h2 id="solucion-title" class="solution__lines reveal">
+      <span class="l1">Vos estás por emigrar.</span>
+      <span class="l2">Ellos ya lo hicieron.</span>
+      <span class="l3"><em>RedEmigra los conecta.</em></span>
+    </h2>
+    <p class="solution__lead reveal">RedEmigra es una red de personas que conectan experiencias migratorias: quien está por emigrar encuentra a alguien que ya vive en el país al que quiere llegar.</p>
+
+    <ul class="routes" aria-label="Rutas de ejemplo">
+      <li class="route reveal"><div class="route__end route__end--from"><svg class="flag flag--lg" aria-hidden="true"><use href="#f-br"/></svg><span>Brasil</span></div><span class="route__line" aria-hidden="true"></span><div class="route__end route__end--to"><svg class="flag flag--lg" aria-hidden="true"><use href="#f-pt"/></svg><span>Portugal</span></div></li>
+      <li class="route reveal" style="--d:70ms"><div class="route__end route__end--from"><svg class="flag flag--lg" aria-hidden="true"><use href="#f-cl"/></svg><span>Chile</span></div><span class="route__line" aria-hidden="true"></span><div class="route__end route__end--to"><svg class="flag flag--lg" aria-hidden="true"><use href="#f-ie"/></svg><span>Irlanda</span></div></li>
+      <li class="route reveal" style="--d:70ms"><div class="route__end route__end--from"><svg class="flag flag--lg" aria-hidden="true"><use href="#f-mx"/></svg><span>México</span></div><span class="route__line" aria-hidden="true"></span><div class="route__end route__end--to"><svg class="flag flag--lg" aria-hidden="true"><use href="#f-de"/></svg><span>Alemania</span></div></li>
+      <li class="route reveal" style="--d:140ms"><div class="route__end route__end--from"><svg class="flag flag--lg" aria-hidden="true"><use href="#f-co"/></svg><span>Colombia</span></div><span class="route__line" aria-hidden="true"></span><div class="route__end route__end--to"><svg class="flag flag--lg" aria-hidden="true"><use href="#f-es"/></svg><span>España</span></div></li>
+      <li class="route reveal" style="--d:140ms"><div class="route__end route__end--from"><svg class="flag flag--lg" aria-hidden="true"><use href="#f-ar"/></svg><span>Argentina</span></div><span class="route__line" aria-hidden="true"></span><div class="route__end route__end--to"><svg class="flag flag--lg" aria-hidden="true"><use href="#f-ie"/></svg><span>Irlanda</span></div></li>
+      <li class="route reveal" style="--d:210ms"><div class="route__end route__end--from"><svg class="flag flag--lg" aria-hidden="true"><use href="#f-pe"/></svg><span>Perú</span></div><span class="route__line" aria-hidden="true"></span><div class="route__end route__end--to"><svg class="flag flag--lg" aria-hidden="true"><use href="#f-es"/></svg><span>España</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 4. COMO FUNCIONA ============ -->
+<section class="section section--gray" id="como-funciona" aria-labelledby="como-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Cómo funciona</span>
+      <h2 id="como-title">Cuatro pasos, sin vueltas</h2>
+      <p>De elegir tu destino a llegar con experiencia práctica de alguien que ya lo vivió.</p>
+    </div>
+    <ol class="steps">
+      <li class="step reveal">
+        <div class="step__num">01<i></i></div>
+        <h3>Elegí tu destino</h3>
+        <p>Seleccioná el país y la ciudad a la que querés emigrar.</p>
+        <div class="mock" aria-hidden="true">
+          <div class="mock__row"><svg class="flag" aria-hidden="true"><use href="#f-ie"/></svg><span class="grow">Irlanda</span><svg class="ico" aria-hidden="true"><use href="#i-chev"/></svg></div>
+          <div class="mock__row"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg><span class="grow">Dublín</span><small>Ciudad</small></div>
+        </div>
+      </li>
+      <li class="step reveal" style="--d:80ms">
+        <div class="step__num">02<i></i></div>
+        <h3>Encontrá a alguien como vos</h3>
+        <p>Buscá personas que tengan una experiencia migratoria similar a la que estás buscando.</p>
+        <div class="mock" aria-hidden="true">
+          <div class="mock__row"><span class="mock__ava"><svg viewBox="0 0 80 80" aria-hidden="true"><use href="#av-valentina"/></svg></span><span class="grow">Valentina<br><small>Chilena en Irlanda</small></span><svg class="ico" aria-hidden="true"><use href="#i-check-circle"/></svg></div>
+          <div class="mock__row" style="opacity:.55"><span class="mock__ava"><svg viewBox="0 0 80 80" aria-hidden="true"><use href="#av-diego"/></svg></span><span class="grow">Otro perfil<br><small>Experiencia similar</small></span></div>
+        </div>
+      </li>
+      <li class="step reveal" style="--d:160ms">
+        <div class="step__num">03<i></i></div>
+        <h3>Reservá una llamada</h3>
+        <p>Elegí el mentor, servicio y horario que mejor se adapte a vos.</p>
+        <div class="mock" aria-hidden="true">
+          <div class="mock__row"><svg class="ico" aria-hidden="true"><use href="#i-calendar"/></svg><span class="grow">Elegí un horario</span><small>30 min</small></div>
+          <div class="mock__times"><span class="mock__time">Mar 18:00</span><span class="mock__time is-on">Mié 19:30</span><span class="mock__time">Jue 18:00</span></div>
+        </div>
+      </li>
+      <li class="step reveal" style="--d:240ms">
+        <div class="step__num">04<i></i></div>
+        <h3>Llegá preparado</h3>
+        <p>Recibí experiencia práctica, recomendaciones y acompañamiento de alguien que ya recorrió ese camino.</p>
+        <div class="mock" aria-hidden="true">
+          <div class="mock__check"><span class="box"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span>Checklist de viaje</div>
+          <div class="mock__check"><span class="box"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span>Dónde buscar alojamiento</div>
+          <div class="mock__check"><span class="box is-off"></span>Mi CV para el destino</div>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ 5. MENTORES ============ -->
+<section class="section section--navy on-dark" id="mentores" aria-labelledby="mentores-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Mentores</span>
+      <h2 id="mentores-title">Conocé a quienes ya hicieron el camino</h2>
+      <p>Inmigrantes que hoy viven en el país al que querés llegar y te cuentan cómo es de verdad.</p>
+    </div>
+
+    <div class="mentors__scroller" role="list" tabindex="0" aria-label="Perfiles de mentores de ejemplo">
+      <article class="mcard reveal" role="listitem">
+        <div class="mcard__top">
+          <div class="avatar"><svg viewBox="0 0 80 80" aria-hidden="true"><use href="#av-valentina"/></svg></div>
+          <div class="mcard__id"><h3>Valentina</h3><p class="mcard__route"><svg class="flag" aria-hidden="true"><use href="#f-cl"/></svg><span>Chilena en</span><svg class="flag" aria-hidden="true"><use href="#f-ie"/></svg><span>Irlanda</span></p></div>
+        </div>
+        <div class="mcard__meta"><span class="rating"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg>4.9</span><span class="tag-example">Ejemplo ilustrativo</span></div>
+        <p class="mcard__quote">“Te cuento cómo es empezar de cero en Irlanda: dónde vivir, cómo buscar trabajo y cómo conocer gente.”</p>
+        <dl class="facts">
+          <div><dt>Experiencia</dt><dd>4 años en Irlanda</dd></div>
+          <div><dt>Llegó como</dt><dd>Visa de trabajo</dd></div>
+          <div><dt>Idiomas</dt><dd>Español / Inglés</dd></div>
+          <div><dt>Profesión</dt><dd>Diseño gráfico</dd></div>
+        </dl>
+        <div class="mcard__foot">
+          <span class="badge-verified"><svg class="ico" aria-hidden="true"><use href="#i-badge"/></svg>Mentor verificado</span>
+          <a class="btn btn--ghost btn--block" data-cta="perfil" data-slug="valentina" href="#registro">Ver perfil <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+
+      <article class="mcard reveal" role="listitem" style="--d:100ms">
+        <div class="mcard__top">
+          <div class="avatar"><svg viewBox="0 0 80 80" aria-hidden="true"><use href="#av-lucas"/></svg></div>
+          <div class="mcard__id"><h3>Lucas</h3><p class="mcard__route"><svg class="flag" aria-hidden="true"><use href="#f-br"/></svg><span>Brasileño en</span><svg class="flag" aria-hidden="true"><use href="#f-pt"/></svg><span>Portugal</span></p></div>
+        </div>
+        <div class="mcard__meta"><span class="rating"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg>5.0</span><span class="tag-example">Ejemplo ilustrativo</span></div>
+        <p class="mcard__quote">“Si vas a Portugal, hablemos: te cuento qué esperar de tus primeras semanas.”</p>
+        <dl class="facts">
+          <div><dt>Experiencia</dt><dd>2 años en Portugal</dd></div>
+          <div><dt>Llegó como</dt><dd>Visa de estudiante</dd></div>
+          <div><dt>Idiomas</dt><dd>Portugués / Español / Inglés</dd></div>
+          <div><dt>Profesión</dt><dd>Ingeniería de software</dd></div>
+        </dl>
+        <div class="mcard__foot">
+          <span class="badge-verified"><svg class="ico" aria-hidden="true"><use href="#i-badge"/></svg>Mentor verificado</span>
+          <a class="btn btn--ghost btn--block" data-cta="perfil" data-slug="lucas" href="#registro">Ver perfil <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+
+      <article class="mcard reveal" role="listitem" style="--d:200ms">
+        <div class="mcard__top">
+          <div class="avatar"><svg viewBox="0 0 80 80" aria-hidden="true"><use href="#av-diego"/></svg></div>
+          <div class="mcard__id"><h3>Diego</h3><p class="mcard__route"><svg class="flag" aria-hidden="true"><use href="#f-mx"/></svg><span>Mexicano en</span><svg class="flag" aria-hidden="true"><use href="#f-de"/></svg><span>Alemania</span></p></div>
+        </div>
+        <div class="mcard__meta"><span class="rating"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg>4.8</span><span class="tag-example">Ejemplo ilustrativo</span></div>
+        <p class="mcard__quote">“Alemania impone desde afuera. Te cuento cómo es el día a día y por dónde empezar.”</p>
+        <dl class="facts">
+          <div><dt>Experiencia</dt><dd>3 años en Alemania</dd></div>
+          <div><dt>Llegó como</dt><dd>Visa de trabajo</dd></div>
+          <div><dt>Idiomas</dt><dd>Español / Alemán / Inglés</dd></div>
+          <div><dt>Profesión</dt><dd>Ingeniería industrial</dd></div>
+        </dl>
+        <div class="mcard__foot">
+          <span class="badge-verified"><svg class="ico" aria-hidden="true"><use href="#i-badge"/></svg>Mentor verificado</span>
+          <a class="btn btn--ghost btn--block" data-cta="perfil" data-slug="diego" href="#registro">Ver perfil <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+
+      <article class="mcard reveal" role="listitem">
+        <div class="mcard__top">
+          <div class="avatar"><svg viewBox="0 0 80 80" aria-hidden="true"><use href="#av-camila"/></svg></div>
+          <div class="mcard__id"><h3>Camila</h3><p class="mcard__route"><svg class="flag" aria-hidden="true"><use href="#f-co"/></svg><span>Colombiana en</span><svg class="flag" aria-hidden="true"><use href="#f-es"/></svg><span>España</span></p></div>
+        </div>
+        <div class="mcard__meta"><span class="rating"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg>4.8</span><span class="tag-example">Ejemplo ilustrativo</span></div>
+        <p class="mcard__quote">“Te cuento cómo armé mi vida en España, desde el primer alojamiento hasta el primer trabajo.”</p>
+        <dl class="facts">
+          <div><dt>Experiencia</dt><dd>5 años en España</dd></div>
+          <div><dt>Llegó como</dt><dd>Visa de trabajo</dd></div>
+          <div><dt>Idiomas</dt><dd>Español / Inglés</dd></div>
+          <div><dt>Profesión</dt><dd>Marketing digital</dd></div>
+        </dl>
+        <div class="mcard__foot">
+          <span class="badge-verified"><svg class="ico" aria-hidden="true"><use href="#i-badge"/></svg>Mentor verificado</span>
+          <a class="btn btn--ghost btn--block" data-cta="perfil" data-slug="camila" href="#registro">Ver perfil <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+
+      <article class="mcard reveal" role="listitem" style="--d:100ms">
+        <div class="mcard__top">
+          <div class="avatar"><svg viewBox="0 0 80 80" aria-hidden="true"><use href="#av-martin"/></svg></div>
+          <div class="mcard__id"><h3>Martín</h3><p class="mcard__route"><svg class="flag" aria-hidden="true"><use href="#f-ar"/></svg><span>Argentino en</span><svg class="flag" aria-hidden="true"><use href="#f-ie"/></svg><span>Irlanda</span></p></div>
+        </div>
+        <div class="mcard__meta"><span class="rating"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg>4.9</span><span class="tag-example">Ejemplo ilustrativo</span></div>
+        <p class="mcard__quote">“Te ayudo a preparar tu llegada a Irlanda sin cometer los errores que yo cometí.”</p>
+        <dl class="facts">
+          <div><dt>Experiencia</dt><dd>3 años en Irlanda</dd></div>
+          <div><dt>Llegó como</dt><dd>Visa de estudiante</dd></div>
+          <div><dt>Idiomas</dt><dd>Español / Inglés</dd></div>
+          <div><dt>Profesión</dt><dd>Gastronomía</dd></div>
+        </dl>
+        <div class="mcard__foot">
+          <span class="badge-verified"><svg class="ico" aria-hidden="true"><use href="#i-badge"/></svg>Mentor verificado</span>
+          <a class="btn btn--ghost btn--block" data-cta="perfil" data-slug="martin" href="#registro">Ver perfil <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+
+      <article class="mcard reveal" role="listitem" style="--d:200ms">
+        <div class="mcard__top">
+          <div class="avatar"><svg viewBox="0 0 80 80" aria-hidden="true"><use href="#av-sofia"/></svg></div>
+          <div class="mcard__id"><h3>Sofía</h3><p class="mcard__route"><svg class="flag" aria-hidden="true"><use href="#f-pe"/></svg><span>Peruana en</span><svg class="flag" aria-hidden="true"><use href="#f-es"/></svg><span>España</span></p></div>
+        </div>
+        <div class="mcard__meta"><span class="rating"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg>4.9</span><span class="tag-example">Ejemplo ilustrativo</span></div>
+        <p class="mcard__quote">“Llegué sin conocer a nadie. Te cuento cómo armé mi red y mis primeros meses.”</p>
+        <dl class="facts">
+          <div><dt>Experiencia</dt><dd>2 años en España</dd></div>
+          <div><dt>Llegó como</dt><dd>Visa de estudiante</dd></div>
+          <div><dt>Idiomas</dt><dd>Español / Inglés</dd></div>
+          <div><dt>Profesión</dt><dd>Arquitectura</dd></div>
+        </dl>
+        <div class="mcard__foot">
+          <span class="badge-verified"><svg class="ico" aria-hidden="true"><use href="#i-badge"/></svg>Mentor verificado</span>
+          <a class="btn btn--ghost btn--block" data-cta="perfil" data-slug="sofia" href="#registro">Ver perfil <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+    </div>
+    <p class="mentors__note"><svg class="ico" aria-hidden="true"><use href="#i-info"/></svg>Los perfiles, reseñas y precios de esta página son ejemplos ilustrativos.</p>
+
+    <div class="become reveal">
+      <div>
+        <h3>¿Ya emigraste? Ayudá a quien viene detrás.</h3>
+        <p>Compartí lo que aprendiste en tu propio camino y convertí tu experiencia en acompañamiento para otras personas.</p>
+      </div>
+      <a class="btn btn--primary" data-cta="mentor" href="#registro">Quiero ser mentor <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. QUE PODES ENCONTRAR ============ -->
+<section class="section" id="que-podes-encontrar" aria-labelledby="temas-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Qué podés encontrar</span>
+      <h2 id="temas-title">Ayuda práctica, de alguien que ya pasó por ahí</h2>
+      <p>Desde dónde buscar alojamiento hasta cómo armar tu círculo social en un lugar nuevo.</p>
+    </div>
+    <ul class="topics">
+      <li class="topic reveal"><span class="topic__icon"><svg class="ico" aria-hidden="true"><use href="#i-home"/></svg></span><h3>Vivienda</h3><p>Dónde buscar y qué tener en cuenta al llegar.</p></li>
+      <li class="topic reveal" style="--d:50ms"><span class="topic__icon"><svg class="ico" aria-hidden="true"><use href="#i-briefcase"/></svg></span><h3>Trabajo</h3><p>Cómo se busca empleo en el día a día.</p></li>
+      <li class="topic reveal" style="--d:100ms"><span class="topic__icon"><svg class="ico" aria-hidden="true"><use href="#i-file"/></svg></span><h3>Trámites</h3><p>Lo que hizo la persona en su propio proceso.</p></li>
+      <li class="topic reveal" style="--d:150ms"><span class="topic__icon"><svg class="ico" aria-hidden="true"><use href="#i-globe"/></svg></span><h3>Cultura</h3><p>Costumbres y ritmo de vida del país.</p></li>
+      <li class="topic reveal"><span class="topic__icon"><svg class="ico" aria-hidden="true"><use href="#i-languages"/></svg></span><h3>Idioma</h3><p>Cómo se vive el idioma en el trabajo y en la calle.</p></li>
+      <li class="topic reveal" style="--d:50ms"><span class="topic__icon"><svg class="ico" aria-hidden="true"><use href="#i-rocket"/></svg></span><h3>Primeros pasos</h3><p>Qué esperar durante las primeras semanas.</p></li>
+      <li class="topic reveal" style="--d:100ms"><span class="topic__icon"><svg class="ico" aria-hidden="true"><use href="#i-cv"/></svg></span><h3>CV</h3><p>Cómo presentarlo para el mercado local.</p></li>
+      <li class="topic reveal" style="--d:150ms"><span class="topic__icon"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg></span><h3>Vida social</h3><p>Cómo conocer gente y armar tu red.</p></li>
+    </ul>
+    <div class="callout reveal" role="note">
+      <svg class="ico" aria-hidden="true"><use href="#i-info"/></svg>
+      <p><strong>Importante:</strong> RedEmigra ofrece acompañamiento basado en experiencia personal. No reemplaza el asesoramiento profesional legal, migratorio o financiero cuando este sea necesario.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. SERVICIOS ============ -->
+<section class="section section--gray" id="servicios" aria-labelledby="servicios-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Servicios</span>
+      <h2 id="servicios-title">Elegí cómo querés que te acompañen</h2>
+      <p>Ejemplos de servicios que puede ofrecer un mentor. Cada mentor fija su propio precio.</p>
+    </div>
+    <div class="plans">
+      <article class="plan reveal">
+        <div class="plan__top"><span class="plan__icon"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg></span><span class="tag-example">Ejemplo</span></div>
+        <div class="plan__head"><h3>Primera llamada</h3><p class="plan__sub">30 minutos</p></div>
+        <p class="plan__price"><small>Desde</small>€20</p>
+        <ul class="plan__list"><li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span>Una primera conversación con alguien que ya vivió el proceso.</span></li></ul>
+        <a class="btn btn--ghost" data-cta="emigrar" href="#registro">Ver mentores <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </article>
+      <article class="plan reveal" style="--d:90ms">
+        <div class="plan__top"><span class="plan__icon"><svg class="ico" aria-hidden="true"><use href="#i-map"/></svg></span><span class="tag-example">Ejemplo</span></div>
+        <div class="plan__head"><h3>Plan de llegada</h3><p class="plan__sub">Incluye:</p></div>
+        <p class="plan__price"><small>Desde</small>€60</p>
+        <ul class="plan__list">
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span>Checklist antes de viajar</span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span>Consejos sobre vivienda</span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span>Recomendaciones para CV</span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span>Primeros pasos</span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span>Preguntas y respuestas</span></li>
+        </ul>
+        <a class="btn btn--ghost" data-cta="emigrar" href="#registro">Ver mentores <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </article>
+      <article class="plan reveal" style="--d:180ms">
+        <div class="plan__top"><span class="plan__icon"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg></span><span class="tag-example">Ejemplo</span></div>
+        <div class="plan__head"><h3>Acompañamiento primer mes</h3><p class="plan__sub">Incluye:</p></div>
+        <p class="plan__price"><small>Desde</small>€150</p>
+        <ul class="plan__list">
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span>4 llamadas</span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span>Dudas por chat</span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span>Recomendaciones prácticas</span></li>
+        </ul>
+        <a class="btn btn--ghost" data-cta="emigrar" href="#registro">Ver mentores <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </article>
+    </div>
+    <p class="plans__note">Cada mentor define su propio precio. Los servicios y valores que ves son ejemplos ilustrativos.</p>
+  </div>
+</section>
+
+<!-- ============ 8. SEGURIDAD Y CONFIANZA ============ -->
+<section class="section" id="confianza" aria-labelledby="confianza-title">
+  <div class="container trust__grid">
+    <div>
+      <div class="section-head reveal" style="margin-bottom:28px">
+        <span class="eyebrow">Seguridad y confianza</span>
+        <h2 id="confianza-title">La confianza es lo primero</h2>
+        <p>Reservás con tranquilidad porque sabés con quién hablás y qué esperar.</p>
+      </div>
+      <ul class="trust__items">
+        <li class="trust__item reveal"><span class="trust__ico"><svg class="ico" aria-hidden="true"><use href="#i-badge"/></svg></span><div><h3>Mentor verificado</h3><p>Un sello que indica que el perfil pasó por el proceso de verificación.</p></div></li>
+        <li class="trust__item reveal"><span class="trust__ico"><svg class="ico" aria-hidden="true"><use href="#i-id"/></svg></span><div><h3>Identidad verificada</h3><p>Sabés que del otro lado hay una persona real.</p></div></li>
+        <li class="trust__item reveal"><span class="trust__ico"><svg class="ico" aria-hidden="true"><use href="#i-plane"/></svg></span><div><h3>Experiencia migratoria</h3><p>Cada mentor cuenta cuándo llegó, cómo y qué hace hoy.</p></div></li>
+        <li class="trust__item reveal"><span class="trust__ico"><svg class="ico" aria-hidden="true"><use href="#i-star-line"/></svg></span><div><h3>Sistema de calificaciones</h3><p>Reseñas de quienes ya tuvieron una sesión.</p></div></li>
+        <li class="trust__item reveal"><span class="trust__ico"><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg></span><div><h3>Pagos seguros</h3><p>Reservás y pagás dentro de la plataforma.</p></div></li>
+        <li class="trust__item reveal"><span class="trust__ico"><svg class="ico" aria-hidden="true"><use href="#i-message"/></svg></span><div><h3>Chat dentro de la plataforma</h3><p>Coordiná y resolvé dudas sin salir de RedEmigra.</p></div></li>
+      </ul>
+    </div>
+
+    <aside class="verify on-dark reveal" aria-labelledby="verify-title">
+      <svg class="dots" viewBox="0 0 748.8 634.4" aria-hidden="true"><use href="#dots-base" class="map-dots"/><use href="#dots-sec" class="map-dots"/><use href="#dots-hot" class="map-dots"/></svg>
+      <span class="eyebrow">Verificación de mentores</span>
+      <h3 id="verify-title" style="margin-top:12px">Así puede ser el proceso</h3>
+      <div class="verify__steps">
+        <div class="vstep"><span class="vstep__dot"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span><div><h4>Identidad</h4><p>Confirmar quién es la persona que te acompaña.</p></div></div>
+        <div class="vstep"><span class="vstep__dot"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span><div><h4>Residencia</h4><p>Confirmar que vive en el país de destino.</p></div></div>
+        <div class="vstep"><span class="vstep__dot"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span><div><h4>Entrevista</h4><p>Conocer su experiencia y cómo puede ayudar.</p></div></div>
+      </div>
+      <div class="verify__result"><span class="badge-verified"><svg class="ico" aria-hidden="true"><use href="#i-badge"/></svg>Mentor verificado</span></div>
+      <p class="verify__note">Los mentores pueden pasar por un proceso de verificación que puede incluir identidad, residencia y una entrevista.</p>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ 9. REPUTACION ============ -->
+<section class="section section--gray" id="resenas" aria-labelledby="resenas-title">
+  <div class="container rep__grid">
+    <div class="reveal">
+      <span class="eyebrow">Sistema de reputación</span>
+      <h2 id="resenas-title" style="margin-top:14px;font-size:clamp(1.9rem,1.1rem + 2.8vw,2.9rem)">Cada sesión suma confianza</h2>
+      <p style="margin-top:18px;font-size:1.125rem">Después de cada sesión, quien recibió la ayuda puede valorarla y dejar un comentario. Así, la próxima persona sabe qué esperar.</p>
+      <ul class="rep__list">
+        <li><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg>Calidad de la información</li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg>Comunicación</li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg>Ayuda recibida</li>
+      </ul>
+    </div>
+
+    <div class="review reveal" style="--d:100ms">
+      <div class="review__head">
+        <div class="avatar"><svg viewBox="0 0 80 80" aria-hidden="true"><use href="#av-diego"/></svg><svg class="flag" aria-hidden="true"><use href="#f-mx"/></svg></div>
+        <div><strong>Sesión con Diego</strong><span>Primera llamada · 30 min</span></div>
+        <span class="tag-example">Ejemplo</span>
+      </div>
+      <div class="crit">
+        <div class="crit__row"><span>Calidad de la información</span><span class="stars5" role="img" aria-label="5 de 5 estrellas"><svg class="ico" style="--i:0" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" style="--i:1" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" style="--i:2" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" style="--i:3" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" style="--i:4" aria-hidden="true"><use href="#i-star"/></svg></span></div>
+        <div class="crit__row"><span>Comunicación</span><span class="stars5" role="img" aria-label="5 de 5 estrellas"><svg class="ico" style="--i:0" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" style="--i:1" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" style="--i:2" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" style="--i:3" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" style="--i:4" aria-hidden="true"><use href="#i-star"/></svg></span></div>
+        <div class="crit__row"><span>Ayuda recibida</span><span class="stars5" role="img" aria-label="5 de 5 estrellas"><svg class="ico" style="--i:0" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" style="--i:1" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" style="--i:2" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" style="--i:3" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico" style="--i:4" aria-hidden="true"><use href="#i-star"/></svg></span></div>
+      </div>
+      <div class="review__comment">
+        <p>“Me ayudó muchísimo a prepararme antes de llegar a Alemania.”</p>
+        <small>Reseña de ejemplo</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10. CTA FINAL ============ -->
+<section class="final on-dark" id="empezar" aria-labelledby="final-title">
+  <svg class="dots" viewBox="0 0 748.8 634.4" aria-hidden="true"><use href="#dots-base" class="map-dots"/><use href="#dots-sec" class="map-dots"/><use href="#dots-hot" class="map-dots"/></svg>
+  <div class="container">
+    <h2 id="final-title" class="reveal">Tu nueva vida puede empezar mucho antes de subirte al avión.</h2>
+    <p class="reveal" style="--d:80ms">Encontrá a alguien que ya hizo el camino que vos estás por empezar.</p>
+    <div class="final__cta reveal" style="--d:160ms">
+      <a class="btn btn--primary" data-cta="emigrar" href="#registro">Encontrar mi mentor <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn--ghost-light" data-cta="mentor" href="#registro">Quiero ser mentor</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ PIE ============ -->
+<footer class="footer on-dark">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a class="brand" href="#top" aria-label="RedEmigra, ir al inicio"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#logo-mark-inv"/></svg><span class="wordmark"><span>Red</span>Emigra</span></a>
+        <p class="footer__tag">Una red de confianza entre inmigrantes.</p>
+      </div>
+      <div>
+        <p class="footer__legal"><strong>Aviso importante.</strong> RedEmigra ofrece acompañamiento basado en experiencia personal y no reemplaza el asesoramiento profesional legal, migratorio o financiero cuando este sea necesario. Los perfiles, reseñas y precios de esta página son ejemplos ilustrativos.</p>
+        <nav class="footer__links" style="margin-top:20px" aria-label="Acciones">
+          <a data-cta="emigrar" href="#registro">Quiero emigrar</a>
+          <a data-cta="mentor" href="#registro">Quiero ser mentor</a>
+          <a data-cta="ingresar" href="/ingresar">Ingresar</a>
+        </nav>
+      </div>
+    </div>
+    <p class="footer__copy">© <span id="year">2026</span> RedEmigra. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script>
+/* ==========================================================================
+   RedEmigra — comportamiento de la landing
+   1. Configuración de enlaces (editá solo esto para conectar el registro)
+   2. Navegación, animaciones de entrada y accesibilidad
+   ========================================================================== */
+
+/* 1. CONFIGURACIÓN ---------------------------------------------------------
+   Todos los botones "Quiero emigrar", "Encontrar mi mentor", "Quiero ser mentor"
+   y "Ver perfil" toman su destino de acá. Cambiá estas rutas cuando exista el
+   registro real; no hace falta tocar el HTML. */
+const REDEMIGRA = {
+  links: {
+    emigrar: "/redemigra-app/web/app.html#/registro?rol=emigrante",
+    mentor: "/redemigra-app/web/app.html#/registro?rol=mentor",
+    ingresar: "/redemigra-app/web/app.html#/ingresar",
+    perfil: function (slug) { return "/redemigra-app/web/app.html#/mentores/" + slug; }
+  }
+};
+
+document.documentElement.classList.add("js");
+
+(function () {
+  "use strict";
+
+  /* Conectar CTAs con la configuración */
+  document.querySelectorAll("[data-cta]").forEach(function (el) {
+    var type = el.getAttribute("data-cta");
+    var target = REDEMIGRA.links[type];
+    if (typeof target === "function") target = target(el.getAttribute("data-slug") || "");
+    if (target) el.setAttribute("href", target);
+  });
+
+  /* Año en el pie */
+  var year = document.getElementById("year");
+  if (year) year.textContent = new Date().getFullYear();
+
+  /* Sombra de la barra al hacer scroll */
+  var nav = document.querySelector(".nav");
+  function onScroll() { if (nav) nav.classList.toggle("is-scrolled", window.scrollY > 8); }
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* Animación de entrada al hacer scroll */
+  var items = document.querySelectorAll(".reveal");
+  if (reduce || !("IntersectionObserver" in window)) {
+    items.forEach(function (el) { el.classList.add("in"); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { entry.target.classList.add("in"); io.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+    items.forEach(function (el) { io.observe(el); });
+  }
+
+  /* Mapa del hero: la valijita recorre rutas de ejemplo entre distintos países.
+     Cada ruta: se enciende el origen, la valijita viaja por el arco y, al llegar,
+     aparece el mentor que vive en el destino. Se pausa fuera de pantalla, con la
+     pestaña oculta o con el botón de pausa; con movimiento reducido queda estático. */
+  var card = document.querySelector(".mapcard");
+  var svg = card && card.querySelector(".mapcard__svg");
+  var routes = svg ? [].slice.call(svg.querySelectorAll(".arc--go")) : [];
+  var suit = svg && svg.querySelector(".suitcase");
+
+  if (reduce && suit) suit.remove();
+
+  if (routes.length && suit && !reduce && "requestAnimationFrame" in window) {
+    var chipM = card.querySelector(".chip--mentor");
+    var chipC = card.querySelector(".chip--call");
+    var btn = card.querySelector(".map-toggle");
+    var lens = routes.map(function (p) { return p.getTotalLength(); });
+
+    var DUR = 5600, T_GO = 500, T_ARRIVE = 3500, T_CALL = 4100, T_FADE = 4900;
+    var idx = 0, t = 0, last = 0, raf = 0;
+    var arrived = false, callShown = false;
+    var visible = true, userPaused = false;
+
+    var clamp = function (v) { return v < 0 ? 0 : v > 1 ? 1 : v; };
+    var ease = function (p) { return p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2; };
+    var $ = function (root, sel) { return root.querySelector(sel); };
+    var setOn = function (city, on) {
+      [].forEach.call(svg.querySelectorAll('[data-city="' + city + '"]'), function (el) { el.classList.toggle("is-on", on); });
+    };
+
+    function fillChip(r) {
+      var ava = chipM.querySelectorAll(".avatar use");
+      ava[0].setAttribute("href", "#av-" + r.getAttribute("data-ava"));
+      ava[1].setAttribute("href", "#f-" + r.getAttribute("data-fc"));
+      $(chipM, '[data-chip="name"]').textContent = r.getAttribute("data-name");
+      $(chipM, '[data-chip="rating"]').textContent = r.getAttribute("data-rating");
+      $(chipM, '[data-chip="desc"]').textContent = r.getAttribute("data-desc");
+      $(chipC, '[data-chip="slot"]').textContent = r.getAttribute("data-slot");
+    }
+
+    function start(i) {
+      routes.forEach(function (r) { r.classList.remove("is-on"); r.style.strokeDashoffset = ""; r.style.opacity = ""; });
+      [].forEach.call(svg.querySelectorAll(".pin, .pin-label"), function (el) { el.classList.remove("is-on"); });
+      idx = i; arrived = false; callShown = false;
+      var r = routes[i];
+      r.classList.add("is-on"); r.style.strokeDashoffset = "1";
+      setOn(r.getAttribute("data-from"), true);
+      chipM.classList.add("is-hidden"); chipC.classList.add("is-hidden");
+    }
+
+    function frame(now) {
+      raf = 0;
+      if (!(visible && !userPaused && !document.hidden)) return;
+      var dt = Math.min(now - last, 60); last = now; t += dt;
+      if (t >= DUR) { t -= DUR; start((idx + 1) % routes.length); }
+      var r = routes[idx];
+      var p = clamp((t - T_GO) / (T_ARRIVE - T_GO)), e = ease(p);
+      r.style.strokeDashoffset = String(1 - e);
+      var pt = r.getPointAtLength(e * lens[idx]);
+      suit.setAttribute("transform", "translate(" + pt.x.toFixed(1) + " " + pt.y.toFixed(1) + ")");
+      var o = p <= 0 ? 0 : Math.min(1, p * 12);
+      if (t > T_ARRIVE) o = Math.max(0, 1 - (t - T_ARRIVE) / 350);
+      suit.setAttribute("opacity", o.toFixed(2));
+      if (!arrived && t >= T_ARRIVE) { arrived = true; setOn(r.getAttribute("data-to"), true); fillChip(r); chipM.classList.remove("is-hidden"); }
+      if (!callShown && t >= T_CALL) { callShown = true; chipC.classList.remove("is-hidden"); }
+      if (t > T_FADE) r.style.opacity = String(Math.max(0, 1 - (t - T_FADE) / (DUR - T_FADE)));
+      raf = requestAnimationFrame(frame);
+    }
+
+    function sync() {
+      var run = visible && !userPaused && !document.hidden;
+      if (run && !raf) { last = performance.now(); raf = requestAnimationFrame(frame); }
+      if (run) svg.unpauseAnimations && svg.unpauseAnimations(); else svg.pauseAnimations && svg.pauseAnimations();
+    }
+
+    start(0);
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (es) { visible = es[0].isIntersecting; sync(); }, { threshold: 0.05 }).observe(card);
+    }
+    document.addEventListener("visibilitychange", sync);
+
+    if (btn) {
+      btn.hidden = false;
+      btn.addEventListener("click", function () {
+        userPaused = !userPaused;
+        card.classList.toggle("is-paused", userPaused);
+        btn.setAttribute("aria-pressed", String(userPaused));
+        btn.setAttribute("aria-label", userPaused ? "Reanudar la animación del mapa" : "Pausar la animación del mapa");
+        btn.querySelector("use").setAttribute("href", userPaused ? "#i-play" : "#i-pause");
+        sync();
+      });
+    }
+    sync();
+  }
+})();
+
+</script>
+</body>
+</html>
