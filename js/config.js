@@ -10,11 +10,9 @@
 // =============================================================================
 window.REDEMIGRA_CONFIG = {
   SUPABASE_URL: "https://pocpgdrizdabqovdlwqo.supabase.co",
-  SUPABASE_ANON_KEY: "sb_publishable_0tDx_8_Z7Prq4qSYOxHYjw_fZ5KTNi5", 
+  SUPABASE_ANON_KEY: "sb_publishable_0tDx_8_Z7Prq4qSYOxHYjw_fZ5KTNi5",
   STRIPE_PUBLISHABLE_KEY: "pk_test_TW6vbhp",
-  GOOGLE_LOGIN: false,
-};
-
   // Botón "Continuar con Google" en el ingreso. Poné true SOLO después de activar el proveedor
   // Google en Supabase > Authentication > Providers (ver SETUP.md, "Opcional").
-  GOOGLE_LOGIN: false
+  GOOGLE_LOGIN: false,
+};
